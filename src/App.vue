@@ -1,50 +1,39 @@
 <template>
   <div id="app">
-    <div id="header">
+    <div id="nav-div">
 
-      <router-link id="header-title" to="/">Purjoy Library Management System</router-link>
+      <!-- headers here -->
 
-      <div v-if="isLogin" class="user-operation-panel" >
-        <span>Welcome, <router-link id="username" to="/user">{{account.name}}</router-link></span>
-
-        <div v-if="isAdmin" class="action-bar">
-          <h5 class="admin"> ( admin ) </h5>
-
-          <span class="button-divider">|</span>
-          <router-link to="/admin/books" class="header-button">Manage Books</router-link>
-
-          <span class="button-divider">|</span>
-          <router-link to="/admin/borrows" class="header-button">Manage Borrows</router-link>
-
-          <span class="button-divider">|</span>
-          <router-link to="/admin/users" class="header-button">Manage Users</router-link>
+      <nav class="navbar  navbar-costum" role="navigation">
+        <div class="container-fluid ">
+          <div class="navbar-header title-in-html">
+            <!--<img src="../static/logo.png" alt="/index" width="100%" height="100">-->
+            <a class="navbar-brand" href="index">EmbadedAndVision</a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav subject-margin-box">
+              <li><a class="subject-item" href="/index"><span class="glyphicon glyphicon-search"></span> 首页</a></li>
+              <li><a class="subject-item" href=""><span class="glyphicon glyphicon-search"></span> 动态</a></li>
+              <li><a class="subject-item" href="">科研</a></li>
+              <li><a class="subject-item" href="">项目</a></li>
+              <li><a class="subject-item" href="/team">团队</a></li>
+              <li><a class="subject-item" href="/about">关于</a></li>
+            </ul>
+          </div>
         </div>
-
-        <span class="action-bar" v-else>
-          <span class="button-divider">|</span>
-          <router-link to="/user/borrows" class="header-button">My Borrows</router-link>
-        </span>
-
-        <div class="button-divider">|</div>
-        <a href="#" class="header-button" @click="logout">Logout</a>
-      </div>
-
-      <div class="user-operation-panel" v-else>
-        <router-link to="/user/login" class="header-button">Login</router-link>
-        <div class="button-divider">|</div>
-        <router-link to="/user/register" class="header-button">Register</router-link>
-      </div>
-
+      </nav>
     </div>
 
+    <!-- unknown -->
     <transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
+      <router-view class="view" style="margin-left: 5%;margin-right: 5%;"></router-view>
     </transition>
+
 
     <div class="container clearfix">
       <hr/>
       <footer class="text-muted">
-        SPM 2016.
+        ETVP 2016.
       </footer>
       <br/>
     </div>
@@ -55,30 +44,7 @@
   import Home from './views/Home';
 
   export default {
-    components: {
-      Home
-    },
-    data() {
-      return {
-      }
-    },
-    methods: {
-      logout() {
-        this.$store.dispatch('LOGOUT');
-        this.$router.push('/index');
-      }
-    },
-    computed: {
-      isLogin() {
-        return this.$store.getters.isLogin;
-      },
-      account() {
-        return this.$store.getters.getAccount;
-      },
-      isAdmin() {
-        return this.$store.getters.isAdmin;
-      }
-    }
+
   };
 </script>
 
@@ -96,69 +62,94 @@
   }
 
   #app {
-    color: #2c3e50;
+    /*color: #2c3e50;*/
     /*font-family: Source Sans Pro, Helvetica, sans-serif;*/
     /*text-align: center;*/
     width: 100%;
   }
 
-  #app a {
-    color: #42b983;
-    text-decoration: none;
+  .navbar-costum {
+    background-color: #910307;
+    border-color: #af2125;
   }
 
-  #header-title {
-    color: #2c3e50;
-    font-family: Source Sans Pro, Helvetica, sans-serif;
-    font-size: 1.4em;
-    font-style: normal;
+  .navbar-costum .navbar-brand {
+    color: #ecf0f1;
   }
 
-  #header {
-    padding: 10px 20px 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+  .navbar-costum .navbar-brand:hover,
+  .navbar-costum .navbar-brand:focus {
+    color: #ffbbbc;
   }
 
-  .user-operation-panel {
-    display: flex;
-    flex-direction: row;
-    align-self: flex-end;
-    align-items: center;
-    align-content: flex-end
+  .navbar-costum .navbar-text {
+    color: #ecf0f1;
   }
 
-  .action-bar {
-    display: flex;
-    margin-left: 10px;
-    padding-right: 4px;
-    flex-direction: row;
-    align-self: flex-end;
-    align-items: baseline;
+  .navbar-costum .navbar-nav > li > a {
+    color: #ecf0f1;
   }
 
-  .button-divider {
-    margin-left: 5px;
-    margin-right: 5px;
-    color: #cccccc;
+  .navbar-costum .navbar-nav > li > a:hover,
+  .navbar-costum .navbar-nav > li > a:focus {
+    color: #af2125;
   }
 
-  #user-operation-panel #admin {
-    margin-left: 10px;
-    padding-right: 4px;
+  .navbar-costum .navbar-nav > .active > a,
+  .navbar-costum .navbar-nav > .active > a:hover,
+  .navbar-costum .navbar-nav > .active > a:focus {
+    color: #af2125;
+    background-color: #af2125;
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s
-  }
-  .fade-enter, .fade-leave-active {
-    opacity: 0
+  .navbar-costum .navbar-nav > .open > a,
+  .navbar-costum .navbar-nav > .open > a:hover,
+  .navbar-costum .navbar-nav > .open > a:focus {
+    color: #af2125;
+    background-color: #af2125;
   }
 
+  .navbar-costum .navbar-toggle {
+    border-color: #af2125;
+  }
+
+  .navbar-costum .navbar-toggle:hover,
+  .navbar-costum .navbar-toggle:focus {
+    background-color: #af2125;
+  }
+
+  .navbar-costum .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+  }
+
+  .navbar-costum .navbar-collapse,
+  .navbar-costum .navbar-form {
+    border-color: #ecf0f1;
+  }
+
+  .navbar-costum .navbar-link {
+    color: #ecf0f1;
+  }
+
+  .navbar-costum .navbar-link:hover {
+    color: #af2125;
+  }
+
+  .subject-margin-box {
+  }
+
+  .subject-item {
+  }
+
+  .title-in-html {
+  }
+
+  .things-title {
+    color: #000;
+  }
   * {
     border-radius: 0 !important;
   }
+
 
 </style>

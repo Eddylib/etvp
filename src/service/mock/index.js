@@ -20,6 +20,22 @@ mock.onPost('/users/login').reply(200, {
   }
 });
 
+mock.onPost('/users/login').reply(200, {
+  success: true,
+  entity: {
+    roles: ['READER'],
+    id: 1,
+    username: 'cauchywei',
+    name: 'Wei Qin',
+    avatarUrl: '233',
+    age: '20',
+    major: 'CS',
+    phone: '23333',
+    email: 'cauchywei@gmail.com',
+    remarks: 'hi'
+  }
+});
+
 mock.onGet('/users/self/').reply(200, {
   role: 'READER',
   id: 1,

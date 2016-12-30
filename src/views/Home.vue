@@ -1,63 +1,88 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="book-page">
-    <input class="input-search" autofocus autocomplete="off" placeholder="Search books here"
-           v-model.trim="searchInput" @keyup.enter="search" />
-    <hr/>
-    <div class="container" v-cloak>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Search Results
+    <div id="myCarousel" class="carousel slide">
+      <!-- 轮播（Carousel）指标 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <!-- 轮播（Carousel）项目 -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://www.xidian.edu.cn/_mediafile/xadzkjdx2/2016/12/19/3e8aibylk2.jpg" alt="First slide"
+               width="100%">
+          <div class="carousel-caption">标题1</div>
         </div>
-        <div class="panel-body">
-          <div v-if="filteredBooks && filteredBooks.length" class="list-group">
-            <div v-for="book in filteredBooks" v-bind:key="book.isbn"
-                 class="list-group-item">
-              <div class="media">
-                <div class="media-left">
-                  <img class="img-book" v-bind:src="book.imageUrl" />
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading list-group-item-heading">
-                    {{ book.name }}
-                  </h4>
-                  <table class="table table-bordered table-condensed table-hover">
-                    <tbody>
-                      <tr v-if="book.isbn">
-                        <td>ISBN</td>
-                        <td>{{ book.isbn }}</td>
-                      </tr>
-                      <tr v-if="book.publisher">
-                        <td>Publisher</td>
-                        <td>{{ book.publisher }}</td>
-                      </tr>
-                      <tr v-if="book.authors && book.authors.length">
-                        <td>Authors</td>
-                        <td>{{ book.authors.join(', ') }}</td>
-                      </tr>
-                      <tr v-if="book.desc">
-                        <td>Description</td>
-                        <td>{{ book.desc }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div>
-                    <button class="btn btn-danger" v-if="isActiveBook(book)" @click="toggleBook(book)">Hide traces</button>
-                    <button class="btn btn-primary" v-else @click="toggleBook(book)">Check traces</button>
-                  </div>
-                  <div v-show="isActiveBook(book)">
-                    <br/>
-                    <trace-list v-bind:traces="book.traces"></trace-list>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div v-else>
-            no matched books.
-          </div>
+        <div class="item">
+          <img src="http://www.xidian.edu.cn/_mediafile/xadzkjdx2/2016/12/19/3e8aibylk2.jpg" alt="Second slide"
+               width="100%">
+          <div class="carousel-caption">标题2</div>
+        </div>
+        <div class="item">
+          <img src="http://www.xidian.edu.cn/_mediafile/xadzkjdx2/2016/12/19/3e8aibylk2.jpg" alt="Third slide"
+               width="100%">
+          <div class="carousel-caption">标题3</div>
         </div>
       </div>
+      <!-- 轮播（Carousel）导航 -->
+      <a class="carousel-control left" href="#myCarousel"
+         data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel"
+         data-slide="next">&rsaquo;</a>
+    </div>
+
+    <div>
+      <table border=0 width="100%" height="100px" style="margin-top:25px">
+        <tbody>
+        <td width="48%" style="vertical-align: top;">
+          <h2>动态</h2>
+          <table class="table table-hover">
+            <tbody>
+            <tr v-for="n in 5">
+              <td width="30%">
+                <img class="home-news-pict" src="http://www.runoob.com/wp-content/uploads/2014/07/slide3.png">
+              </td>
+              <td width="60%">
+                <table>
+                  <a class="things-title">hello1</a>
+                  <p>hello world</p>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <span class="label label-default">date</span>
+                </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+        <td width="48%" style="vertical-align: top;">
+          <h2>项目</h2>
+          <table class="table table-hover">
+            <tbody>
+            <tr v-for="n in 5">
+              <td width="30%">
+                <img class="home-news-pict" src="http://www.runoob.com/wp-content/uploads/2014/07/slide3.png">
+              </td>
+              <td width="60%">
+                <table>
+                  <a class="things-title">hello1</a>
+                  <p>hello world</p>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <span class="label label-default">date</span>
+                </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -134,23 +159,18 @@
 
 <style scoped>
 
-  .input-search {
-    padding: 8px 30px 0 40px;
-    font-size: 16px;
-    border: none;
-    background: rgba(0, 0, 0, 0.003);
-    outline: none;
-    width: 100%;
+
+  .book-page {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
-  .img-book {
-    width: 100px;
-    height: 150px;
-    border: 1px solid #eee;
+  .home-news-pict {
+    width: 150px;
+    height: 100px;
+    margin-top: 1%;
   }
-
   tr > td:first-child {
-    width: 100px;
+    /*width: 100px;*/
   }
-
 </style>
