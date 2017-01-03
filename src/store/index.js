@@ -91,7 +91,7 @@ const store = new Vuex.Store({
     admin_bookTraces: [],
     admin_borrows: [],
     // news: titie,url,home-page-pict-url
-    homeslide: [],
+    homeslide: [''],
     // news: page-num,titie,description,url,disp-small-picturl,detail-url,is-in-homepage,home-page-pict-url
     news: [],
     // studys: page-num,titie,description,url,disp-small-picturl,detial-url
@@ -108,6 +108,17 @@ const store = new Vuex.Store({
   },
 
   actions: {
+    FETCH_HOME_SLIDE_LIST: ({ commit, dispatch, state, getters }) => {
+
+        console.log("fetch method: need fetch");
+        return service.getHomeSlideList().then(response => {
+          if(response.data.state === 1) {
+            commit('SET_HOME_SLIDE', response.data.data);
+          } else {
+            alert("error response \n" + response.data);
+          }
+        })
+    },
 
     ADMIN_FETCH_BOOK_TRACES: ({ commit, dispatch, state, getters }, book) => {
       if (!getters.isAdmin) return false;
@@ -128,7 +139,9 @@ const store = new Vuex.Store({
   },
 
   mutations: {
-
+    SET_HOME_SLIDE: (state, data) => {
+    state.homeslide = data.slice();
+  },
     DEL_ACCOUNT: (state) => {
       state.account = null;
       localStorage.setItem('account', null);
