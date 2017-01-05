@@ -13,7 +13,7 @@
           <div class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav subject-margin-box">
               <li><a class="subject-item" href="/index"><span class="glyphicon glyphicon-search"></span> 首页</a></li>
-              <li><a class="subject-item" href=""><span class="glyphicon glyphicon-search"></span> 动态</a></li>
+              <li><a class="subject-item" href="/activity"><span class="glyphicon glyphicon-search"></span> 动态</a></li>
               <li><a class="subject-item" href="">科研</a></li>
               <li><a class="subject-item" href="">项目</a></li>
               <li><a class="subject-item" href="/team">团队</a></li>

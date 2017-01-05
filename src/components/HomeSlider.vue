@@ -2,12 +2,10 @@
   <div>
     <swiper :options="swiperOption" ref="mySwiperA">
       <!-- 幻灯内容 -->
-      <swiper-slide
-        v-for="item in homeslide"
-        >
+      <swiper-slide v-for="item in homeslide">
         <a :href="item.url"><img :src="item.pictpath" alt="item.pictpath" width="100%"></a>
-        <div style="position:absolute;z-index: auto; right: 10%; top: 90%;text-align: center;">
-          <h5 style="color: whitesmoke;">{{item.title}}</h5>
+        <div style="position:absolute;z-index: auto; right: 10%; top: 90%;align: center; background-color: black">
+          <p style="color: whitesmoke; font-size: large">{{item.title}}</p>
         </div>
       </swiper-slide>
       <!-- ... -->

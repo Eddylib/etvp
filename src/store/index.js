@@ -3,155 +3,95 @@ import Vuex from 'vuex';
 import * as service from '../service';
 
 Vue.use(Vuex);
-
-let account;
-try {
-  account = JSON.parse(localStorage.getItem('account'));
-} catch(e) {
-  localStorage.setItem('account', null);
-  account = null;
-}
-
-let methods = {
-
-  getBook: (books, isbn) => {
-    if (books instanceof Array) {
-      for (let i in books) {
-        let e = books[i];
-        if (e && e.isbn === isbn) {
-          return {
-            index: i,
-            value: e
-          };
-        }
-      }
-      return {
-        index: -1,
-        value: undefined
-      };
-    } else {
-      return undefined;
-    }
-  },
-
-  getBookTrace: (traces, id) => {
-    if (traces instanceof Array) {
-      for (let i in traces) {
-        let e = traces[i];
-        if (e && e.id === id) {
-          return {
-            index: i,
-            value: e
-          };
-        }
-      }
-      return {
-        index: null,
-        value: undefined
-      };
-    } else {
-      return undefined;
-    }
-  },
-
-  getBorrow: (borrows, id) => {
-    if (borrows instanceof Array) {
-      for (let i in borrows) {
-        let e = borrows[i];
-        if (e && e.id === id) {
-          return {
-            index: i,
-            value: e
-          };
-        }
-      }
-      return {
-        index: null,
-        value: undefined
-      };
-    } else {
-      return undefined;
-    }
-  },
-
-  DUMP: () => {}
-
-};
-
 const store = new Vuex.Store({
   state: {
 
-    account: account,
-
-    books: [],
-    borrows: [],
-
-    admin_users: [],
-    admin_books: [],
-    admin_bookTraces: [],
-    admin_borrows: [],
-    // news: titie,url,home-page-pict-url
+    // activities: titie,url,home-page-pict-url
     homeslide: [''],
-    // news: page-num,titie,description,url,disp-small-picturl,detail-url,is-in-homepage,home-page-pict-url
-    news: [],
+    // activities: page-num,titie,description,url,disp-small-picturl,detail-url,is-in-homepage,home-page-pict-url
+    homeActivities: [],
     // studys: page-num,titie,description,url,disp-small-picturl,detial-url
-    studys: [],
+    homeStudys: [],
     // projects: page-num,titie,description,url,disp-small-picturl,detial-url,members
-    projects: [],
+    homeProjects: [],
     // teachers: disp-pict-url,name,study-master
     teachers: [],
     // students: name,page-url,pict-url,study-master,in-school-date,after-graduate,[presentation],[aword],[paper]
-    students: [],
+    listStudents: [],
+    listGraduates: [],
     DUMP: {}
-
     //
   },
 
   actions: {
     FETCH_HOME_SLIDE_LIST: ({ commit, dispatch, state, getters }) => {
-
-        console.log("fetch method: need fetch");
         return service.getHomeSlideList().then(response => {
           if(response.data.state === 1) {
             commit('SET_HOME_SLIDE', response.data.data);
           } else {
-            alert("error response \n" + response.data);
+            alert("network : error response on fetching home slide list data\n" + response.data);
           }
         })
     },
-
-    ADMIN_FETCH_BOOK_TRACES: ({ commit, dispatch, state, getters }, book) => {
-      if (!getters.isAdmin) return false;
-      return service.getBookTracesByAdmin(book).then(response => {
-        if (response.data.success) {
-          commit('ADMIN_SET_BOOK_TRACES', {
-            isbn: book.isbn,
-            traces: response.data.entities
-          });
+    FETCH_HOME_LIST: ({ commit, dispatch, state, getters }, type) => {
+      return service.getHomeList(type).then(response => {
+        if(response.data.state === 1) {
+          commit('SET_HOME_LIST', response.data.data, type);
         } else {
-          console.log(response.data.error);
-          alert(response.data.error);
+          alert("network : error response on fetching home list data\n" + response.data);
         }
-      }).catch(e => {
-        alert(e);
-      });
+      })
+    },
+    FETCH_TEACHERS: ({ commit, dispatch, state, getters }) => {
+      return service.getTeacherList().then(response => {
+        if(response.data.state === 1) {
+          commit('SET_LIST_TEACHERS', response.data.data);
+        } else {
+          alert("network : error response on fetching teachers data\n" + response.data);
+        }
+      })
+    },
+    FETCH_STUDENTS: ({ commit, dispatch, state, getters }, type) => {
+      return service.getStudentsList(type).then(response => {
+        if(response.data.state === 1) {
+          commit('SET_LIST_STUDENTS', response.data.data, type);
+        } else {
+          alert("network : error response on fetching students data\n" + response.data);
+        }
+      })
     }
   },
 
   mutations: {
     SET_HOME_SLIDE: (state, data) => {
-    state.homeslide = data.slice();
-  },
-    DEL_ACCOUNT: (state) => {
-      state.account = null;
-      localStorage.setItem('account', null);
+      state.homeslide = data.slice();
+    },
+    // home means items just shown in the home list -- 5 newest per type
+    SET_HOME_LIST: (state, data, type) => {
+
+      if(type === 'activity') {
+        state.homeActivities = data.slice();
+      }else if(type === 'science') {
+        state.homeStudys = data.slice();
+      }else if(type === 'project') {
+        state.homeProjects = data.slice();
+      }else {
+        alert("error request type");
+      }
+    },
+    SET_LIST_TEACHERS: (state, data) => {
+      state.listTeachers = data.slice();
+    },
+    SET_LIST_STUDENTS: (state, data, type) => {
+      if(type === 'inschool') {
+        state.listStudents = data.slice();
+      }else if(type === 'outschool') {
+        state.listGraduates = data.slice();
+      }
     }
   },
 
   getters: {
-    isLogin: state => {
-      return !!state.account;
-    }
   }
 });
 

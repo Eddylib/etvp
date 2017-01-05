@@ -16,8 +16,11 @@ switch (env) {
     break;
 }
 export const urltable = {
-  homeslidelist: 'hi',
-  homelist: 'hello'
+  homeslidelist: 'homeslide',
+  homelist: 'homeslide',
+  teachers: 'homeslide',
+  studentsinschool: 'homeslide',
+  studentsoutschool: 'homeslide'
 };
 function extractMapToForm(map) {
   const form = new FormData();
@@ -33,6 +36,16 @@ export function getHomeSlideList() {
 export function getHomeList(type) {
   return axios.post(urltable.homelist, {function: 'get_home', classify: type});
 }
-export function borrowBookTrace(trace) {
-  return axios.post(`/books/${trace.book.isbn}/traces/${trace.id}/lend`);
+export function getTeacherList() {
+  return axios.post(urltable.teachers, {function: 'get_teachers'});
 }
+export function getStudentsList(type) {
+  if(type === 'inschool') {
+    return axios.post(urltable.studentsinschool, {function: 'get_students', state: 'study'});
+  }else if(type === 'outschool') {
+    return axios.post(urltable.studentsoutschool, {function: 'get_students', state: 'graduate'});
+  }else {
+    alert('network: error request type in get student list!');
+  }
+}
+

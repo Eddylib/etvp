@@ -13,6 +13,7 @@ import AboutView from '../views/About.vue'
 import TeamView from '../views/Team.vue'
 import StudentView from '../views/Students.vue'
 import AddArticleView from '../views/AddArticle.vue'
+import Activity from '../views/Acitvity.vue'
 Vue.use(Router);
 
 var router = new Router({
@@ -20,6 +21,7 @@ var router = new Router({
   scrollBehavior: () => ({y: 0}),
   routes: [
     { path: '/index', component: HomeView },
+    { path: '/activity', component: Activity },
     { path: '/addarticle', component: AddArticleView },
     { path: '/student', component: StudentView },
     { path: '/user/login', component: LoginView },

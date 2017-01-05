@@ -14,16 +14,23 @@
   },
   "dependencies": {
     "axios": "^0.15.0",
+    "ckeditor": "^4.6.1",
+    "fs": "0.0.1-security",
     "jsdom": "^9.6.0",
+    "ueditor": "^1.2.0",
     "vue": "^2.0.1",
     "vue-awesome-swiper": "^2.2.9",
+    "vue-quill-editor": "^1.1.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.0",
+    "vue2-editor": "^1.0.99",
+    "vue2-medium-editor": "^1.0.0",
     "vuex": "^2.0.0",
     "vuex-router-sync": "^3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
+    "awesome-vue2-ace-editor": "^1.0.3",
     "axios-mock-adapter": "^1.7.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",

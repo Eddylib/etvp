@@ -45,35 +45,35 @@
       </td>
     </table>
     <!-- reading students -->
-    <table width="100%">
+    <table width="90%">
       <thead><h4>在读研究生</h4></thead>
       <tbody width="100%">
       <td width="30%">
         <table class="table table-striped table-hover">
-          <thead><p>研一</p></thead>
+          <thead><p style="text-align: center">研一</p></thead>
           <tbody>
           <tr v-for="n in 10">
-            <ul>adsfasdf</ul>
+            <ul style="text-align: center">adsfasdf</ul>
           </tr>
           </tbody>
         </table>
       </td>
       <td width="30%">
         <table class="table table-striped table-hover">
-          <thead><p>研二</p></thead>
+          <thead><p style="text-align: center">研二</p></thead>
           <tbody>
           <tr v-for="n in 10">
-            <ul>adsfasdf</ul>
+            <ul style="text-align: center">adsfasdf</ul>
           </tr>
           </tbody>
         </table>
       </td>
       <td width="30%">
         <table class="table table-striped table-hover">
-          <thead><p>研三</p></thead>
+          <thead><p style="text-align: center">研三</p></thead>
           <tbody>
           <tr v-for="n in 10">
-            <ul>adsfasdf</ul>
+            <ul style="text-align: center">adsfasdf</ul>
           </tr>
           </tbody>
         </table>
@@ -84,7 +84,7 @@
     <!-- gratudeate students -->
     <h4>毕业生</h4>
     <div class="row">
-      <div class="col-xs-3" v-for="n in 100"><a href="/student">haha</a></div>
+      <div class="col-xs-3" v-for="n in 100"><a href="/student"><p style="text-align: center">fafa</p></a></div>
     </div>
 
   </div>
