@@ -39,7 +39,7 @@
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" href="/activity">hello1</a>
+                  <a class="things-title" href="/adminmain">hello1</a>
                   <p>hello world</p>
                 </table>
               </td>

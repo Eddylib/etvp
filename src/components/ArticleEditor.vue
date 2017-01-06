@@ -1,27 +1,50 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <div >
-    <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+  <div>
+    <div class="divcenter">
+      <mt-button @click="geteditor()" type="danger">获取</mt-button>
+      <mt-button @click="printHtml()" type="danger">显示</mt-button>
+      <div id="editor" type="text/plain" style="width:100%;height:500px;"></div>
+    </div>
+    <div>
+      {{htmlContent}}
+    </div>
+    <div v-html="htmlContent"></div>
   </div>
+
 </template>
 
 <script>
   import Vue from 'vue';
-  import a from 'ueditor';
+  const UE = require('UE');// eslint-disable-line
   export default {
+    name: 'editorView',
     data() {
-      return {};
-    },
-    ready() {
-    },
-    computed: {
-
+        return { editor: null, htmlcontent: {} };
     },
     methods: {
-
+      geteditor() {
+        console.log(this.editor.getContent());
+      },
+      printHtml() {
+        this.htmlcontent = this.editor.getContent();
+      }
     },
-    components: {
+    computed: {
+        htmlContent() {
+            return this.htmlcontent;
+        }
+    },
+    mounted() {
+      this.editor = UE.getEditor('editor');
+    },
+    destroyed() {
+      this.editor.destroy();
     }
-  }
+  };
 </script>
 <style scoped>
+  .divcenter {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>
