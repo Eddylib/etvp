@@ -1,8 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div>
     <div class="divcenter">
-      <mt-button @click="geteditor()" type="danger">获取</mt-button>
-      <mt-button @click="printHtml()" type="danger">显示</mt-button>
       <div id="editor" type="text/plain" style="width:100%;height:500px;"></div>
     </div>
     <div>
@@ -31,7 +29,11 @@
     },
     computed: {
         htmlContent() {
-            return this.htmlcontent;
+            if(this.editor == null) {
+              return '';
+            } else {
+              return this.editor.getContent();
+            }
         }
     },
     mounted() {

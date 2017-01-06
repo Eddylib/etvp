@@ -6,7 +6,7 @@
       </div>
       <!-- 添加 -->
       <div>
-        <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&mothod=add'" role="button">{{ addbuttontext }}</a></p>
+        <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&method=add'" role="button">{{ addbuttontext }}</a></p>
       </div>
       <table width="100%" class="table table-striped" style="margin-top: 30px">
         <thead>
@@ -14,6 +14,7 @@
           <th>{{ listhead }}</th>
           <th>删除</th>
           <th>编辑</th>
+          <th v-if="$route.query.request === 'project'" width="10%">管理成员</th>
         </tr>
         </thead>
         <tbody>
@@ -25,9 +26,11 @@
             <button type="button" class="btn btn-default" @click="delDirect(item)">删除</button>
           </td>
             <!-- 编辑 -->
-          <td width="20%">
-
-            <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&mothod=modify&id=' + item.num" role="button">编辑</a></p>
+          <td>
+            <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&method=modify&id=' + item.num" role="button">编辑</a></p>
+          </td>
+          <td v-if="$route.query.request === 'project'">
+            <p><a class="btn btn-default" :href="'projectmember?id=' + item.num" role="button">编辑</a></p>
           </td>
         </tr>
         </tbody>

@@ -19,6 +19,7 @@ import BorrowRecordsView from '../views/Borrows';
 import BookManagementView from '../views/admin/BookManagement';
 import BorrowManagementView from '../views/admin/BorrowManagement';
 import UserManagementView from '../views/admin/UserManagement';
+import ProjectMemberView from '../views/admin/ProjectMember.vue';
 Vue.use(Router);
 
 var router = new Router({
@@ -36,6 +37,7 @@ var router = new Router({
     { path: '/adminmasterlist', component: ControlDirectListView },
     { path: '/adminasplist', component: ControlASPListView },
     { path: '/adminaspdetail', component: ControlASPDetailView },
+    { path: '/projectmember', component: ProjectMemberView },
     //
     { path: '/user/borrows', component: BorrowRecordsView },
     { path: '/admin/books', component: BookManagementView },
