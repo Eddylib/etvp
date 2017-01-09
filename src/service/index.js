@@ -16,11 +16,11 @@ switch (env) {
     break;
 }
 export const urltable = {
-  homeslidelist: 'homeslide',
-  homelist: 'homeslide',
-  teachers: 'homeslide',
-  studentsinschool: 'homeslide',
-  studentsoutschool: 'homeslide'
+  homeslidelist: 'home',
+  homelist: 'home',
+  teachers: 'team',
+  studentsinschool: 'team',
+  studentsoutschool: 'team'
 };
 function extractMapToForm(map) {
   const form = new FormData();
@@ -31,7 +31,7 @@ function extractMapToForm(map) {
   return form;
 }
 export function getHomeSlideList() {
-  return axios.post(urltable.homeslidelist, {function: 'haha'});
+  return axios.post(urltable.homeslidelist, {function: 'get_home', classify: 'slide'});
 }
 export function getHomeList(type) {
   return axios.post(urltable.homelist, {function: 'get_home', classify: type});
@@ -45,7 +45,15 @@ export function getStudentsList(type) {
   }else if(type === 'outschool') {
     return axios.post(urltable.studentsoutschool, {function: 'get_students', state: 'graduate'});
   }else {
-    alert('network: error request type in get student list!');
+    alert('network: error request type in get student list!  --service');
   }
 }
-
+export function getAllActivityList() {
+  return axios.post(urltable.teachers, {function: 'get_list', classify: 'activity'});
+}
+export function getAllProjectList() {
+  return axios.post(urltable.teachers, {function: 'get_list', classify: 'project'});
+}
+export function getAllScienceList() {
+  return axios.post(urltable.teachers, {function: 'get_list', classify: 'science'});
+}

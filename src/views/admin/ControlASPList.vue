@@ -12,15 +12,17 @@
         <thead>
         <tr>
           <th>{{ listhead }}</th>
+          <th>图片</th>
           <th>删除</th>
           <th>编辑</th>
           <th v-if="$route.query.request === 'project'" width="10%">管理成员</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="item in this.dirlist">
+        <tr v-for="item in contentList">
           <!-- 显示 -->
-          <td width="80%" style="margin-left: 70%">{{ item.num }}</td>
+          <td  style="margin-left: 70%">{{ item.title }}</td>
+          <td width="80%"><img :src="item.picture" :alt="item.picture"></td>
           <td>
             <!-- 删除 -->
             <button type="button" class="btn btn-default" @click="delDirect(item)">删除</button>
@@ -62,6 +64,13 @@
           {num: 5},
           {num: 6}
         ]
+      },
+      contentList: function () {
+        if(this.$data.ruquestparm === 'activity') {
+          return this.$store.state.homeActivities;
+        }else if(this.$data.ruquestparm === 'project') {
+          return this.$store.state.homeProjects;
+        }
       }
     },
     methods: {
@@ -94,6 +103,8 @@
         this.$data.listhead = '项目';
       }
       this.$data.ruquestparm = argumentin;
+        // you can use current swiper object to do something(swiper methods)
+        // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
     }
   }
 </script>

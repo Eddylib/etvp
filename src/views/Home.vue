@@ -10,19 +10,19 @@
           <h2>动态</h2>
           <table class="table table-hover">
             <tbody>
-            <tr v-for="n in 5">
+            <tr v-for="item in activityList">
               <td width="30%">
-                <img class="home-news-pict" src="http://www.runoob.com/wp-content/uploads/2014/07/slide3.png">
+                <img class="home-news-pict" :src="item.picture">
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" href="/addarticle">hello1</a>
-                  <p>hello world</p>
+                  <a class="things-title" href="/adminmain">{{ item.title }}</a>
+                  <p>{{ item.guide }}</p>
                 </table>
               </td>
               <td>
                 <table>
-                  <span class="label label-default">date</span>
+                  <span class="label label-default">{{ new Date(item.time).toLocaleDateString() }}</span>
                 </table>
               </td>
             </tr>
@@ -33,19 +33,19 @@
           <h2>项目</h2>
           <table class="table table-hover">
             <tbody>
-            <tr v-for="h in 5">
+            <tr v-for="item in projectList">
               <td width="30%">
-                <img class="home-news-pict" src="http://www.runoob.com/wp-content/uploads/2014/07/slide3.png">
+                <img class="home-news-pict" :src="item.picture">
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" href="/adminmain">hello1</a>
-                  <p>hello world</p>
+                  <a class="things-title" href="/adminmain">{{ item.title }}</a>
+                  <p>{{ item.guide }}</p>
                 </table>
               </td>
               <td>
                 <table>
-                  <span class="label label-default">date</span>
+                  <span class="label label-default">{{ new Date(item.time).toLocaleDateString() }}</span>
                 </table>
               </td>
             </tr>
@@ -70,13 +70,20 @@
         };
     },
     mounted() {
+      this.$store.dispatch('FETCH_HOME_LIST', 'activity');
+      this.$store.dispatch('FETCH_HOME_LIST', 'project');
     },
     watch: {},
     computed: {
+      activityList: function () {
+          return this.$store.state.homeActivities;
+        },
+      projectList: function () {
+        return this.$store.state.homeProjects;
+      },
       DUMP: () => {}
     },
     methods: {
-
       DUMP: function() {}
     },
     components: {

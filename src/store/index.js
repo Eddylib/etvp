@@ -15,7 +15,7 @@ const store = new Vuex.Store({
     // projects: page-num,titie,description,url,disp-small-picturl,detial-url,members
     homeProjects: [],
     // teachers: disp-pict-url,name,study-master
-    teachers: [],
+    listTeachers: [],
     // students: name,page-url,pict-url,study-master,in-school-date,after-graduate,[presentation],[aword],[paper]
     listStudents: [],
     listGraduates: [],
@@ -29,16 +29,16 @@ const store = new Vuex.Store({
           if(response.data.state === 1) {
             commit('SET_HOME_SLIDE', response.data.data);
           } else {
-            alert("network : error response on fetching home slide list data\n" + response.data);
+            alert("network : error response on fetching home slide list data\n" + response.data.message);
           }
         })
     },
     FETCH_HOME_LIST: ({ commit, dispatch, state, getters }, type) => {
       return service.getHomeList(type).then(response => {
         if(response.data.state === 1) {
-          commit('SET_HOME_LIST', response.data.data, type);
+          commit('SET_HOME_LIST', {datacontent: response.data.data, datatype: type});
         } else {
-          alert("network : error response on fetching home list data\n" + response.data);
+          alert("network : error response on fetching home list data\n" + response.data.message);
         }
       })
     },
@@ -47,16 +47,20 @@ const store = new Vuex.Store({
         if(response.data.state === 1) {
           commit('SET_LIST_TEACHERS', response.data.data);
         } else {
-          alert("network : error response on fetching teachers data\n" + response.data);
+          alert("network : error response on fetching teachers data\n" + response.data.message);
         }
       })
     },
     FETCH_STUDENTS: ({ commit, dispatch, state, getters }, type) => {
       return service.getStudentsList(type).then(response => {
         if(response.data.state === 1) {
-          commit('SET_LIST_STUDENTS', response.data.data, type);
+          if(type === 'inschool') {
+            commit('SET_LIST_STUDENTS_INSCHOOL', response.data.data);
+          } else if(type === 'outschool') {
+            commit('SET_LIST_STUDENTS_OUTSCHOOL', response.data.data);
+          }
         } else {
-          alert("network : error response on fetching students data\n" + response.data);
+          alert("network : error response on fetching students data\n" + response.data.message);
         }
       })
     }
@@ -67,27 +71,25 @@ const store = new Vuex.Store({
       state.homeslide = data.slice();
     },
     // home means items just shown in the home list -- 5 newest per type
-    SET_HOME_LIST: (state, data, type) => {
-
-      if(type === 'activity') {
-        state.homeActivities = data.slice();
-      }else if(type === 'science') {
-        state.homeStudys = data.slice();
-      }else if(type === 'project') {
-        state.homeProjects = data.slice();
+    SET_HOME_LIST: (state, data) => {
+      if(data.datatype === 'activity') {
+        state.homeActivities = data.datacontent;
+      }else if(data.datatype === 'science') {
+        state.homeStudys = data.datacontent;
+      }else if(data.datatype === 'project') {
+        state.homeProjects = data.datacontent;
       }else {
-        alert("error request type");
+        alert("error request type  --store /set home list " + data.datatype);
       }
     },
     SET_LIST_TEACHERS: (state, data) => {
-      state.listTeachers = data.slice();
+      state.listTeachers = data;
     },
-    SET_LIST_STUDENTS: (state, data, type) => {
-      if(type === 'inschool') {
-        state.listStudents = data.slice();
-      }else if(type === 'outschool') {
-        state.listGraduates = data.slice();
-      }
+    SET_LIST_STUDENTS_INSCHOOL: (state, data) => {
+        state.listStudents = data;
+    },
+    SET_LIST_STUDENTS_OUTSCHOOL: (state, data) => {
+        state.listGraduates = data;
     }
   },
 
