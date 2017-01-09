@@ -20,7 +20,11 @@ export const urltable = {
   homelist: 'home',
   teachers: 'team',
   studentsinschool: 'team',
-  studentsoutschool: 'team'
+  studentsoutschool: 'team',
+  studentdetail: 'student',
+  itemlist: 'list',
+  editInfo: 'editinfo',
+  articledetail: 'article'
 };
 function extractMapToForm(map) {
   const form = new FormData();
@@ -49,11 +53,52 @@ export function getStudentsList(type) {
   }
 }
 export function getAllActivityList() {
-  return axios.post(urltable.teachers, {function: 'get_list', classify: 'activity'});
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'activity', page: '0'});
 }
 export function getAllProjectList() {
-  return axios.post(urltable.teachers, {function: 'get_list', classify: 'project'});
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'project', page: '0'});
 }
 export function getAllScienceList() {
-  return axios.post(urltable.teachers, {function: 'get_list', classify: 'science'});
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'science', page: '0'});
+}
+export function getStudintDetailBaseInfo(idin) {
+  return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'simple', id: idin});
+}
+export function getStudintDetilSpeech(idin) {
+  return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'speech', id: idin});
+}
+export function getStudintDetilProject(idin) {
+  return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'project', id: idin});
+}
+export function getStudintDetilPrize(idin) {
+  return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'prize', id: idin});
+}
+export function getStudintDetilThesis(idin) {
+  return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'thesis', id: idin});
+}
+export function addASPD(item) {
+  return axios.post(urltable.editInfo,
+    {function: 'add',
+      condition: item.condition,
+      title: item.title,
+      guide: item.guide,
+      picture: item.picture,
+      path: item.path});
+}
+export function editASPD(item) {
+  return axios.post(urltable.editInfo,
+    {function: 'edit',
+      condition: item.condition,
+      id: item.id,
+      title: item.title,
+      guide: item.guide,
+      picture: item.picture,
+      path: item.path});
+}
+
+export function getASPDDetail(item) {
+  return axios.post(urltable.articledetail,
+    {function: 'get_article_detail',
+      classify: item.classify,
+      id: item.id});
 }

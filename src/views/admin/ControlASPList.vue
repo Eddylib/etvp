@@ -13,6 +13,7 @@
         <tr>
           <th>{{ listhead }}</th>
           <th>图片</th>
+          <th></th>
           <th>删除</th>
           <th>编辑</th>
           <th v-if="$route.query.request === 'project'" width="10%">管理成员</th>
@@ -22,14 +23,15 @@
         <tr v-for="item in contentList">
           <!-- 显示 -->
           <td  style="margin-left: 70%">{{ item.title }}</td>
-          <td width="80%"><img :src="item.picture" :alt="item.picture"></td>
+          <td><img :src="item.picture" :alt="item.picture" width="100%"></td>
+          <td width="45%"></td>
           <td>
             <!-- 删除 -->
             <button type="button" class="btn btn-default" @click="delDirect(item)">删除</button>
           </td>
             <!-- 编辑 -->
           <td>
-            <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&method=modify&id=' + item.num" role="button">编辑</a></p>
+            <p><a class="btn btn-default" :href="'adminaspdetail?request=' + ruquestparm + '&method=modify&id=' + item.id + '&picture=' + item.picture" role="button">编辑</a></p>
           </td>
           <td v-if="$route.query.request === 'project'">
             <p><a class="btn btn-default" :href="'projectmember?id=' + item.num" role="button">编辑</a></p>
@@ -67,9 +69,11 @@
       },
       contentList: function () {
         if(this.$data.ruquestparm === 'activity') {
-          return this.$store.state.homeActivities;
+          return this.$store.state.listActivity;
         }else if(this.$data.ruquestparm === 'project') {
-          return this.$store.state.homeProjects;
+          return this.$store.state.listProject;
+        }else if(this.$data.ruquestparm === 'study') {
+          return this.$store.state.listScience;
         }
       }
     },
@@ -91,20 +95,24 @@
         this.$data.headsubtitle = '实验室动态管理';
         this.$data.addbuttontext = '增加动态';
         this.$data.listhead = '动态';
+        this.$store.dispatch('FETCH_LIST_ACTIVITY');
       } else if(argumentin === 'study') {
         this.$data.headtitle = '实验室科研管理';
         this.$data.headsubtitle = '实验室科研管理';
         this.$data.addbuttontext = '增加科研';
         this.$data.listhead = '科研';
+        this.$store.dispatch('FETCH_LIST_SCIENCE');
       } else if(argumentin === 'project') {
         this.$data.headtitle = '实验室项目管理';
         this.$data.headsubtitle = '实验室项目管理';
         this.$data.addbuttontext = '增加项目';
         this.$data.listhead = '项目';
+        this.$store.dispatch('FETCH_LIST_PROJECT');
       }
       this.$data.ruquestparm = argumentin;
         // you can use current swiper object to do something(swiper methods)
         // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
+
     }
   }
 </script>

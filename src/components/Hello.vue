@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msgp }}</h1>
   </div>
 </template>
 
@@ -10,7 +10,8 @@ export default {
     return {
       msg: 'Hello Vue!'
     }
-  }
+  },
+  props: ['msgp']
 }
 </script>
 

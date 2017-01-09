@@ -98,7 +98,7 @@
         DUMP: null
       }
     },
-    beforeMount() {
+    mounted() {
       this.$store.dispatch('FETCH_BORROWS');
     },
     watch: {
