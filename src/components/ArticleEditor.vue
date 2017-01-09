@@ -3,10 +3,6 @@
     <div class="divcenter">
       <div id="editor" type="text/plain" style="width:100%;height:500px;"></div>
     </div>
-    <div>
-      {{htmlContent}}
-    </div>
-    <div v-html="htmlContent"></div>
   </div>
 
 </template>
@@ -20,8 +16,11 @@
         return { editor: null, htmlcontent: {} };
     },
     methods: {
-      geteditor() {
-        console.log(this.editor.getContent());
+      geteditorcontent() {
+        return this.editor.getContent();
+      },
+      seteditorcontent(str) {
+        this.editor.setContent(str);
       },
       printHtml() {
         this.htmlcontent = this.editor.getContent();
