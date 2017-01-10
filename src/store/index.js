@@ -18,6 +18,7 @@ const store = new Vuex.Store({
     listProject: [],
     listActivity: [],
     listScience: [],
+    sumpage: [],
     // teachers: disp-pict-url,name,study-master
     listTeachers: [],
     // students: name,page-url,pict-url,study-master,in-school-date,after-graduate,[presentation],[aword],[paper]
@@ -115,28 +116,31 @@ const store = new Vuex.Store({
         }
       })
     },
-    FETCH_LIST_PROJECT: ({ commit, dispatch, state, getters }) => {
-      return service.getAllProjectList().then(response => {
+    FETCH_LIST_PROJECT: ({ commit, dispatch, state, getters }, page) => {
+      return service.getAllProjectList(page).then(response => {
         if(response.data.state === 1) {
           commit('SET_LIST_PROJECT', response.data.data);
+          commit('SET_LIST_SUM_PAGE', response.data.sum_page);
         } else {
           alert("service error\n" + response.data.message);
         }
       })
     },
-    FETCH_LIST_ACTIVITY: ({ commit, dispatch, state, getters }) => {
-      return service.getAllActivityList().then(response => {
+    FETCH_LIST_ACTIVITY: ({ commit, dispatch, state, getters }, page) => {
+      return service.getAllActivityList(page).then(response => {
         if(response.data.state === 1) {
           commit('SET_LIST_ACTIVITY', response.data.data);
+          commit('SET_LIST_SUM_PAGE', response.data.sum_page);
         } else {
           alert("service error\n" + response.data.message);
         }
       })
     },
-    FETCH_LIST_SCIENCE: ({ commit, dispatch, state, getters }) => {
-      return service.getAllScienceList().then(response => {
+    FETCH_LIST_SCIENCE: ({ commit, dispatch, state, getters }, page) => {
+      return service.getAllScienceList(page).then(response => {
         if(response.data.state === 1) {
           commit('SET_LIST_SCIENCE', response.data.data);
+          commit('SET_LIST_SUM_PAGE', response.data.sum_page);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -224,6 +228,9 @@ const store = new Vuex.Store({
     },
     CLEAR_CURR_ARTICLE_INFO: (state) => {
       state.currArticle = {};
+    },
+    SET_LIST_SUM_PAGE: (state, data) => {
+      state.sumpage = data;
     }
   },
 

@@ -19,12 +19,14 @@
               <tr><h4>姓名</h4></tr>
               <tr><h4>方向</h4></tr>
               <tr><h4>年级</h4></tr>
+              <tr><h4>邮箱</h4></tr>
               <tr><h4>毕业去向</h4></tr>
             </td>
             <td>
               <tr><h4>{{ stuname }}</h4></tr>
               <tr><h4>{{ studirect }}</h4></tr>
               <tr><h4>{{ stustate }}</h4></tr>
+              <tr><h4>{{ stuemail }}</h4></tr>
               <tr><h4>{{ stuwork }}</h4></tr>
             </td>
             </tbody>
@@ -72,6 +74,9 @@
       },
       studirect: function () {
         return this.$store.state.currStudent.baseInfo.direction;
+      },
+      stuemail: function () {
+        return this.$store.state.currStudent.baseInfo.email;
       },
       stuspeeches: function () {
         return this.$store.state.currStudent.speeches;
