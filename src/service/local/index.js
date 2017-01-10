@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function serviceUrl() {
-  return 'http://192.168.110.103:8080/myTest';
+  return 'http://138.197.208.74:8080/myTest';
 }
 
 const instance = axios.create({

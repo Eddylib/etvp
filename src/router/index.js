@@ -11,6 +11,11 @@ import ControlMainView from '../views/admin/ControlMain.vue'
 import ControlDirectListView from '../views/admin/ControlDirectList.vue'
 import ControlASPListView from '../views/admin/ControlASPList.vue'
 import ControlASPDetailView from '../views/admin/ControlASPDetail.vue'
+import ProjectMemberView from '../views/admin/ProjectMember.vue';
+import ASPListView from '../views/ASPList.vue'
+import ASPDetailView from '../views/ASPDetail.vue'
+import ControlStudentList from '../views/admin/ControlStudentList.vue'
+import ControlStudentDetail from '../views/admin/ControlStudentDetail.vue'
 //
 import LoginView from '../views/Login';
 import RegisterView from '../views/Register';
@@ -19,7 +24,6 @@ import BorrowRecordsView from '../views/Borrows';
 import BookManagementView from '../views/admin/BookManagement';
 import BorrowManagementView from '../views/admin/BorrowManagement';
 import UserManagementView from '../views/admin/UserManagement';
-import ProjectMemberView from '../views/admin/ProjectMember.vue';
 Vue.use(Router);
 
 var router = new Router({
@@ -38,6 +42,10 @@ var router = new Router({
     { path: '/adminasplist', component: ControlASPListView },
     { path: '/adminaspdetail', component: ControlASPDetailView },
     { path: '/projectmember', component: ProjectMemberView },
+    { path: '/asplist', component: ASPListView },
+    { path: '/aspdetail', component: ASPDetailView },
+    { path: '/adminstudentlist', component: ControlStudentList },
+    { path: '/adminstudentdetail', component: ControlStudentDetail },
     //
     { path: '/user/borrows', component: BorrowRecordsView },
     { path: '/admin/books', component: BookManagementView },

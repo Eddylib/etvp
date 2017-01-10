@@ -52,14 +52,14 @@ export function getStudentsList(type) {
     alert('network: error request type in get student list!  --service');
   }
 }
-export function getAllActivityList() {
-  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'activity', page: '0'});
+export function getAllActivityList(page) {
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'activity', page: page});
 }
-export function getAllProjectList() {
-  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'project', page: '0'});
+export function getAllProjectList(page) {
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'project', page: page});
 }
-export function getAllScienceList() {
-  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'science', page: '0'});
+export function getAllScienceList(page) {
+  return axios.post(urltable.itemlist, {function: 'get_list', classify: 'science', page: page});
 }
 export function getStudintDetailBaseInfo(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'simple', id: idin});
