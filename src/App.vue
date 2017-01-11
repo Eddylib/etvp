@@ -10,12 +10,12 @@
         <div >
           <div class="navbaritembox" id="daohang">
             <ul>
-              <li><a href="index"><span class="glyphicon glyphicon-home"></span>主页</a></li>
-              <li><a href="asplist?request=activity"><span class="glyphicon glyphicon-calendar"></span>动态</a></li>
-              <li><a href="asplist?request=study"><span class="glyphicon glyphicon-book"></span>项目</a></li>
-              <li><a href="asplist?request=project"><span class="glyphicon glyphicon-wrench">科研</a></li>
-              <li><a href="team"><span class="glyphicon glyphicon-user"></span>团队</a></li>
-              <li><a href="about"><span class="glyphicon glyphicon-comment"></span>关于</a></li>
+              <li><a href="index"><span class="glyphicon glyphicon-calendar">主页</span></a></li>
+              <li><a href="asplist?request=activity"><span class="glyphicon glyphicon-calendar">动态</span></a></li>
+              <li><a href="asplist?request=study"><span class="glyphicon glyphicon-book">项目</span></a></li>
+              <li><a href="asplist?request=project"><span class="glyphicon glyphicon-wrench">科研</span></a></li>
+              <li><a href="team"><span class="glyphicon glyphicon-user">团队</span></a></li>
+              <li><a href="about"><span class="glyphicon glyphicon-comment">关于</span></a></li>
             </ul>
           </div>
         </div>
@@ -119,9 +119,9 @@
     width: 700px;
     height: 50px;
   }
-  #daohang ul{ list-style:none;}
-  #daohang ul li{ width:90px;   float:left; text-align:center;}
+  #daohang ul{ list-style:none; margin-left: 55px}
+  #daohang ul li{ width:90px;   float:left;}
   #daohang ul li:hover{}
-  #daohang ul li a{text-decoration:none; display:block;height: 40px;}
-  #daohang ul li a:hover{ background:#eeeeee; color:#000000;}
+  #daohang ul li a{text-decoration:none; display:block;height: 40px; text-align: center; color: white; font-size: 17px; line-height: 30px}
+  #daohang ul li a:hover{ background:#eeeeee; color:#750D10;}
 </style>
