@@ -1,27 +1,48 @@
 <template>
   <div id="app">
+
+
+
     <div id="nav-div">
 
-      <!-- headers here -->
-
-      <nav class="navbar  navbar-costum" role="navigation">
-        <div class="container-fluid ">
-          <div class="navbar-header title-in-html">
-            <!--<img src="../static/logo.png" alt="/index" width="100%" height="100">-->
-            <a class="navbar-brand" href="index">EmbadedAndVision</a>
-          </div>
-          <div class="collapse navbar-collapse navbar-right">
-            <ul class="nav navbar-nav subject-margin-box">
-              <li><a class="subject-item" href="/index"><span class="glyphicon glyphicon-search"></span> 首页</a></li>
-              <li><a class="subject-item" href="asplist?request=activity"><span class="glyphicon glyphicon-search"></span> 动态</a></li>
-              <li><a class="subject-item" href="asplist?request=study">科研</a></li>
-              <li><a class="subject-item" href="asplist?request=project">项目</a></li>
-              <li><a class="subject-item" href="/team">团队</a></li>
-              <li><a class="subject-item" href="/about">关于</a></li>
+      <div class="navbarback" style="">
+        <a href="index"><img class="logoimg" src="../static/logo.png" alt="西安电子科技大学嵌入式与视觉处理研究中心" width="40%"></a>
+        <div >
+          <div class="navbaritembox" id="daohang">
+            <ul>
+              <li><a href="index"><span class="glyphicon glyphicon-home"></span>主页</a></li>
+              <li><a href="asplist?request=activity"><span class="glyphicon glyphicon-calendar"></span>动态</a></li>
+              <li><a href="asplist?request=study"><span class="glyphicon glyphicon-book"></span>项目</a></li>
+              <li><a href="asplist?request=project"><span class="glyphicon glyphicon-wrench">科研</a></li>
+              <li><a href="team"><span class="glyphicon glyphicon-user"></span>团队</a></li>
+              <li><a href="about"><span class="glyphicon glyphicon-comment"></span>关于</a></li>
             </ul>
           </div>
         </div>
-      </nav>
+      </div>
+      <!-- headers here -->
+      <!--<div>-->
+        <!--<nav class="navbar  navbar-costum" role="navigation">-->
+          <!--<div class="container-fluid ">-->
+            <!--<div class="navbar-header title-in-html">-->
+              <!--&lt;!&ndash;<img src="../static/logo.png" alt="/index" width="100%" height="100">&ndash;&gt;-->
+              <!--<a class="navbar-brand" href="index" style="margin-left: 10px;"><img src="../static/logo.png" alt="" width="50%" style="margin-left:20px;margin-top: 20px;margin-bottom: 20px "></a>-->
+            <!--</div>-->
+            <!--<div class="collapse navbar-collapse navbar-right">-->
+              <!--<ul class="nav navbar-nav subject-margin-box">-->
+                <!--<li><a class="subject-item" href="/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>-->
+                <!--<li><a class="subject-item" href="asplist?request=activity"><span class="glyphicon glyphicon-calendar"></span> 动态</a></li>-->
+                <!--<li><a class="subject-item" href="asplist?request=study"><span class="glyphicon glyphicon-book"></span>科研</a></li>-->
+                <!--<li><a class="subject-item" href="asplist?request=project"><span class="glyphicon glyphicon-wrench"></span>项目</a></li>-->
+                <!--<li><a class="subject-item" href="/team"><span class="glyphicon glyphicon-user"></span>团队</a></li>-->
+                <!--<li><a class="subject-item" href="/about"><span class="glyphicon glyphicon-comment"></span>关于</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</nav>-->
+      <!--</div>-->
+
+
     </div>
 
     <!-- unknown -->
@@ -33,7 +54,14 @@
     <div class="container clearfix">
       <hr/>
       <footer class="text-muted">
-        ETVP 2016.
+        <div>
+          <span class="footeritem">南校区地址：陕西省西安市西沣路兴隆段266号</span>
+          <span class="footeritem"> 邮编：710126</span>
+          <span class="footeritem">北校区地址：陕西省西安市太白南路2号</span>
+          <span class="footeritem"> 邮编：710071</span>
+        </div>
+        <div>
+          <span class="footeritem">电话：029-88201000</span></div>
       </footer>
       <br/>
     </div>
@@ -68,88 +96,32 @@
     width: 100%;
   }
 
-  .navbar-costum {
-    background-color: #910307;
-    border-color: #af2125;
-  }
-
-  .navbar-costum .navbar-brand {
-    color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-brand:hover,
-  .navbar-costum .navbar-brand:focus {
-    color: #ffbbbc;
-  }
-
-  .navbar-costum .navbar-text {
-    color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-nav > li > a {
-    color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-nav > li > a:hover,
-  .navbar-costum .navbar-nav > li > a:focus {
-    color: #af2125;
-  }
-
-  .navbar-costum .navbar-nav > .active > a,
-  .navbar-costum .navbar-nav > .active > a:hover,
-  .navbar-costum .navbar-nav > .active > a:focus {
-    color: #af2125;
-    background-color: #af2125;
-  }
-
-  .navbar-costum .navbar-nav > .open > a,
-  .navbar-costum .navbar-nav > .open > a:hover,
-  .navbar-costum .navbar-nav > .open > a:focus {
-    color: #af2125;
-    background-color: #af2125;
-  }
-
-  .navbar-costum .navbar-toggle {
-    border-color: #af2125;
-  }
-
-  .navbar-costum .navbar-toggle:hover,
-  .navbar-costum .navbar-toggle:focus {
-    background-color: #af2125;
-  }
-
-  .navbar-costum .navbar-toggle .icon-bar {
-    background-color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-collapse,
-  .navbar-costum .navbar-form {
-    border-color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-link {
-    color: #ecf0f1;
-  }
-
-  .navbar-costum .navbar-link:hover {
-    color: #af2125;
-  }
-
-  .subject-margin-box {
-  }
-
-  .subject-item {
-  }
-
-  .title-in-html {
-  }
-
-  .things-title {
-    color: #000;
-  }
-  * {
-    border-radius: 0 !important;
-  }
 
 
+
+  .navbarback{
+     background-image: url("../static/45-degree-fabric-dark.png");
+     background-color: #910307;
+     margin-bottom: 20px;
+     width: 100%;
+     height: 110px;
+   }
+  .logoimg{
+    margin: 30px;
+  }
+  .footeritem{
+    margin-right: 30px;
+  }
+  #daohang{
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    width: 700px;
+    height: 50px;
+  }
+  #daohang ul{ list-style:none;}
+  #daohang ul li{ width:90px;   float:left; text-align:center;}
+  #daohang ul li:hover{}
+  #daohang ul li a{text-decoration:none; display:block;height: 40px;}
+  #daohang ul li a:hover{ background:#eeeeee; color:#000000;}
 </style>

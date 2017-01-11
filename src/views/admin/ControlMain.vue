@@ -15,6 +15,9 @@
           <tr><p><a class="btn btn-primary btn-lg" href="adminasplist?request=study" role="button">科研管理</a></p></tr>
           <tr><p><a class="btn btn-primary btn-lg" href="adminasplist?request=project" role="button">项目管理</a></p></tr>
         </td>
+        <td style="margin-left: 100px">
+          <tr ><p><a class="btn btn-primary btn-lg" href="adminhomeslide" role="button">首页滑块管理</a></p></tr>
+        </td>
       </table>
     </div>
 

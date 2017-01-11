@@ -16,6 +16,7 @@ import ASPListView from '../views/ASPList.vue'
 import ASPDetailView from '../views/ASPDetail.vue'
 import ControlStudentList from '../views/admin/ControlStudentList.vue'
 import ControlStudentDetail from '../views/admin/ControlStudentDetail.vue'
+import ControlHomeSlide from '../views/admin/ControlHomeSlide.vue'
 //
 import LoginView from '../views/Login';
 import RegisterView from '../views/Register';
@@ -46,6 +47,7 @@ var router = new Router({
     { path: '/aspdetail', component: ASPDetailView },
     { path: '/adminstudentlist', component: ControlStudentList },
     { path: '/adminstudentdetail', component: ControlStudentDetail },
+    { path: '/adminhomeslide', component: ControlHomeSlide },
     //
     { path: '/user/borrows', component: BorrowRecordsView },
     { path: '/admin/books', component: BookManagementView },

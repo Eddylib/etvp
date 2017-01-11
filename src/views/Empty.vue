@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  var answer;
   import Vue from 'vue';
   export default {
     data: function() {
@@ -14,7 +13,6 @@
     methods: {
     },
     components: {
-      Hello
     }
   }
 </script>

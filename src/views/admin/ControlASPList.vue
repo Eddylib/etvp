@@ -59,14 +59,7 @@
     },
     computed: {
       dirlist: function () {
-        return [
-          {num: 1},
-          {num: 2},
-          {num: 3},
-          {num: 4},
-          {num: 5},
-          {num: 6}
-        ]
+        return {}
       },
       contentList: function () {
         if(this.$data.ruquestparm === 'activity') {

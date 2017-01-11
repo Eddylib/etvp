@@ -24,7 +24,9 @@ export const urltable = {
   studentdetail: 'student',
   itemlist: 'list',
   editInfo: 'editinfo',
-  articledetail: 'article'
+  articledetail: 'article',
+  deleteinfo: 'delete',
+  getdirect: 'list'
 };
 function extractMapToForm(map) {
   const form = new FormData();
@@ -37,11 +39,26 @@ function extractMapToForm(map) {
 export function getHomeSlideList() {
   return axios.post(urltable.homeslidelist, {function: 'get_home', classify: 'slide'});
 }
+export function addHomeSlideList(item) {
+  return axios.post(urltable.editInfo,
+    {function: 'add_slide',
+      id: item.id,
+      classify: item.classify,
+      picture: item.picture});
+}
+// export function editHomeSlideList(item) {
+//   return axios.post(urltable.homeslidelist, {function: 'get_home', classify: 'slide'});
+// }
+export function deleteHomeSlideList(item) {
+  return axios.post(urltable.deleteinfo,
+    {function: 'delete_slide',
+      id: item.id});
+}
 export function getHomeList(type) {
   return axios.post(urltable.homelist, {function: 'get_home', classify: type});
 }
 export function getTeacherList() {
-  return axios.post(urltable.teachers, {function: 'get_teachers'});
+  return axios.post(urltable.teachers, {function: 'get_teachers', state: 'all'});
 }
 export function getStudentsList(type) {
   if(type === 'inschool') {
@@ -100,5 +117,30 @@ export function getASPDDetail(item) {
   return axios.post(urltable.articledetail,
     {function: 'get_article_detail',
       classify: item.classify,
+      id: item.id});
+}
+export function getDirect() {
+  return axios.post(urltable.getdirect,
+    {function: 'get_direction'});
+}
+
+export function addDirect(item) {
+  return axios.post(urltable.editInfo,
+    {function: 'add',
+      condition: 'direction',
+      name: item.name,
+      guide: item.guide});
+}
+export function editDirect(item) {
+  return axios.post(urltable.editInfo,
+    {function: 'edit',
+      condition: 'direction',
+      id: item.id,
+      name: item.name,
+      guide: item.guide});
+}
+export function deleteDirect(item) {
+  return axios.post(urltable.deleteinfo,
+    {function: 'delete_direction',
       id: item.id});
 }

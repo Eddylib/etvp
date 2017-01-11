@@ -26,6 +26,7 @@ const store = new Vuex.Store({
     listGraduates: [],
     currStudent: {baseInfo: {}, speeches: [], projects: [], prizes: [], thesises: []},
     currArticle: {},
+    directionList: {},
     DUMP: {}
     //
   },
@@ -40,6 +41,33 @@ const store = new Vuex.Store({
           }
         })
     },
+    ADD_HOME_SLIDE_LIST: ({ commit, dispatch, state, getters }, item) => {
+      return service.addHomeSlideList(item).then(response => {
+        if(response.data.state === 1) {
+          alert("add home slide item ok!\n" + response.data.message);
+        } else {
+          alert("service error!\n" + response.data.message);
+        }
+      })
+    },
+    DEL_HOME_SLIDE_LIST: ({ commit, dispatch, state, getters }, item) => {
+      return service.deleteHomeSlideList(item).then(response => {
+        if(response.data.state === 1) {
+          alert("delete home slide item ok!\n" + response.data.message);
+        } else {
+          alert("service error!\n" + response.data.message);
+        }
+      })
+    },
+    // EDIT_HOME_SLIDE_LIST: ({ commit, dispatch, state, getters }, item) => {
+    //   return service.editHomeSlideList(item).then(response => {
+    //     if(response.data.state === 1) {
+    //       alert("edit home slide item ok!\n" + response.data.message);
+    //     } else {
+    //       alert("service error!\n" + response.data.message);
+    //     }
+    //   })
+    // },
     FETCH_HOME_LIST: ({ commit, dispatch, state, getters }, type) => {
       return service.getHomeList(type).then(response => {
         if(response.data.state === 1) {
@@ -158,7 +186,7 @@ const store = new Vuex.Store({
     EDIT_ASP: ({ commit, dispatch, state, getters }, item) => {
       return service.editASPD(item).then(response => {
         if(response.data.state === 1) {
-          alert("submit ok!\n" + response.data.message);
+          alert("edit" + item.condition + "  ok!\n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -168,7 +196,42 @@ const store = new Vuex.Store({
       return service.getASPDDetail(item).then(response => {
         commit('SET_CURR_ARTICLE_INFO', response.data.data);
         if(response.data.state === 1) {
+          commit('SET_CURR_ARTICLE_INFO', response.data.data);
         } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    FETCH_DIRECTION_LIST: ({ commit, dispatch, state, getters }) => {
+      return service.getDirect().then(response => {
+        commit('SET_DIRECT_LIST', response.data.data);
+        if(response.data.state === 1) {
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    ADD_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
+      return service.addDirect(item).then(response => {
+        if(response.data.state === 1) {
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    EDIT_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
+      return service.editDirect(item).then(response => {
+        if(response.data.state === 1) {
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
+      return service.deleteDirect(item).then(response => {
+        if(response.data.state === 1) {
+        } else {
+          alert("service error\n" + response.data.message);
         }
       })
     }
@@ -231,6 +294,9 @@ const store = new Vuex.Store({
     },
     SET_LIST_SUM_PAGE: (state, data) => {
       state.sumpage = data;
+    },
+    SET_DIRECT_LIST: (state, data) => {
+      state.directionList = data;
     }
   },
 

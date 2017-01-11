@@ -1,49 +1,11 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div>
     <div class="page-header">
-      <h1>{{ headtitleMethod + headtitleType }}<small>——{{ this.$data.headsubtitle }}</small></h1>
+      <h1>{{ headtitleType }}<small>——{{ headsubtitle }}</small></h1>
     </div>
-    <div>
-    </div>
-    <div style="margin-left: 10%">
-      <table width="100%" style="border-collapse:separate; border-spacing:0px 30px;">
-        <tr>
-          <td width="11%" style="text-align: center"><h4>标题：</h4></td>
-          <td width="90%"><div class="col-sm-10">
-            <input class="form-control" id="inputtitle"  :value="contentinfo.title" placeholder="此标题在外部展示，正文请再次加入标题">
-          </div></td>
-        </tr>
-        <tr>
-        <td width="11%" style="text-align: center"><h4>简介：</h4></td>
-        <td width="90%">
-          <div class="col-sm-10">
-            <textarea class="form-control" id="inputguide" :value="contentinfo.guide" placeholder="简介"></textarea>
-          </div></td>
-      </tr>
-        <tr>
-          <td width="11%" style="text-align: center"><h4>图片链接：</h4></td>
-          <td width="90%"><div class="col-sm-10">
-            <input class="form-control" id="inputpicture" v-model:value="pictureurl" placeholder="图为科研/项目/活动列表左侧的小图片，宽高比为4:3">
-          </div></td>
-        </tr>
-      </table>
-    </div>
-    <div>
-      <div style="text-align: center">
-        <h3>列表图片效果</h3>
-        <img :src="pictureurl" :alt="pictureurl" width="200px" height="150px">
-      </div>
-      <h3 style="margin-left: 10%">正文：</h3>
-      <h5 style="margin-left: 10%">(由于技术问题，请点击下面的按钮获取原文内容，也可用它重置)</h5>
-      <h5 style="margin-left: 10%">(正文请再次加入标题)</h5>
-      <div style="text-align: center;width: 100%;margin-top: 10px">
-        <button type="button" class="btn btn-default" @click="retsetContent()" style="width: 50%">重置</button>
-      </div>
-      <editor ref="editorref" :initialcontent="contentinfocontent"></editor>
-    </div>
-    <div style="text-align: center;width: 100%;margin-top: 10px">
-      <button type="button" class="btn btn-default" @click="submit()" style="width: 30%">提交</button>
-    </div>
+
+    <div v-html="contentinfocontent" style="margin-top:50px;width: 90%;margin-left: 5%"></div>
+
   </div>
 </template>
 
@@ -53,9 +15,7 @@
   export default {
     data() {
         return {
-            headtitleMethod: '',
             headtitleType: '',
-            headsubtitle: '',
             methodtype: '',
             requesttype: '',
             pictureurl: '',
@@ -76,14 +36,11 @@
       },
       contentinfocontent: function () {
         return this.$store.state.currArticle.url;
+      },
+      headsubtitle: function () {
+        return this.$store.state.currArticle.title;
       }
     },
-//    watch: {
-//      contentinfocontent: function (val, oldval) {
-//        this.articlecontent = val;
-//        this.$children[0].seteditorcontent(val);
-//      }
-//    },
     methods: {
       submit: function() {
         let subitem = {};
@@ -148,19 +105,8 @@
         }
         this.$data.requesttype = argumentin;
         argumentin = this.$route.query.method;
-        if(argumentin === 'add') {
-          this.$data.headtitleMethod = '增加';
-          this.$store.commit('CLEAR_CURR_ARTICLE_INFO');
-        } else if(argumentin === 'modify') {
-          this.$data.headtitleMethod = '编辑';
-          /*
-           * {function: 'get_article_detail',
-           classify: item.classify,
-           id: item.id} */
-          item.id = this.$route.query.id;
-          this.$store.dispatch('FETCH_ASP_DETAIL', item);
-        }
-        this.$data.headsubtitle = '编辑信息并提交';
+        item.id = this.$route.query.id;
+        this.$store.dispatch('FETCH_ASP_DETAIL', item);
         this.$data.methodtype = argumentin;
         this.$data.pictureurl = this.$route.query.picture;
     },
