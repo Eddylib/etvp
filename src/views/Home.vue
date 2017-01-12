@@ -16,7 +16,7 @@
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" :href="'aspdetail?request=activity&id=' + item.id">{{ item.title }}</a>
+                  <a class="things-title" :href="'aspdetail?request=activity&id=' + item.id" style="color: #333333">{{ item.title }}</a>
                   <p>{{ item.guide }}</p>
                 </table>
               </td>
@@ -39,7 +39,7 @@
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" :href="'aspdetail?request=project&id=' + item.id">{{ item.title }}</a>
+                  <a class="things-title" :href="'aspdetail?request=project&id=' + item.id" style="color: #333333">{{ item.title }}</a>
                   <p>{{ item.guide }}</p>
                 </table>
               </td>

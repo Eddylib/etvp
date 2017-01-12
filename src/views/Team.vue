@@ -2,14 +2,16 @@
   <div>
     <!-- teacher -->
     <h1>导师</h1>
-    <table width="100%"><div><div class="col-xs-3" v-for="item in lteachers">
-      <table>
-        <img class="team-mamber-teacher-pict"
-             :src="item.picture"></tr>
-        <tr><a :href="item.web"><p width=100% align="center" style="margin-top: 10px">{{item.name}}</p></a></tr>
-        <tr><p width=100% align="center">研究方向:{{item.direction}}</p></tr>
+    <table width="100%">
+      <div class="col-xs-3" v-for="item in lteachers">
+        <table >
+          <tr style="text-align: center"><a :href="item.web" thumbnail><img class="team-mamber-teacher-pict"
+                              :src="item.picture"></a></tr>
+          <tr style="text-align: center"><a :href="item.web" style="color: #333333"><p width=100% align="center" style="margin-top: 10px">{{item.name}}</p></a></tr>
+          <tr style="text-align: center"><p width=100% align="center">研究方向:{{item.direction}}</p></tr>
       </table>
-    </div></div></table>
+      </div>
+    </table>
 
     <!-- reading students -->
     <div>
@@ -26,7 +28,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents1">
-            <ul style="text-align: center"><a :href="'student?id='+item.id">{{ item.name }}</a></ul>
+            <ul style="text-align: center">{{ item.name }}</ul>
           </tr>
           </tbody>
         </table>
@@ -35,7 +37,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents2">
-            <ul style="text-align: center"><a :href="'student?id='+item.id">{{ item.name }}</a></ul>
+            <ul style="text-align: center">{{ item.name }}</ul>
           </tr>
           </tbody>
         </table>
@@ -44,7 +46,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents3">
-            <ul style="text-align: center"><a :href="'student?id='+item.id">{{ item.name }}</a></ul>
+            <ul style="text-align: center">{{ item.name }}</ul>
           </tr>
           </tbody>
         </table>
@@ -55,7 +57,8 @@
     <!-- gratudeate students -->
     <h4>毕业生</h4>
     <div class="row">
-      <div class="col-xs-3" v-for="item in loutschoolstudents"><a :href="'student?id='+item.id"><p style="text-align: center">{{ item.name }}</p></a></div>
+      <!--<a :href="'student?id='+item.id"></a>-->
+      <div class="col-xs-3" v-for="item in loutschoolstudents"><p style="text-align: center">{{ item.name }}</p></div>
     </div>
 
   </div>
@@ -125,9 +128,8 @@
 
 <style scoped>
   .team-mamber-teacher-pict {
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 70%;
+    width: 150px;
+    height: 200px;
   }
 
   .team-mamber-teacher-box {

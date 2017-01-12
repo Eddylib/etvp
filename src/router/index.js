@@ -38,7 +38,7 @@ var router = new Router({
     { path: '/user', component: UserView },
     { path: '/team', component: TeamView },
     { path: '/about', component: AboutView },
-    { path: '/adminmain', component: ControlMainView },
+    { path: '/adminmainetvp14159265358979323846264338', component: ControlMainView },
     { path: '/adminmasterlist', component: ControlDirectListView },
     { path: '/adminasplist', component: ControlASPListView },
     { path: '/adminaspdetail', component: ControlASPDetailView },

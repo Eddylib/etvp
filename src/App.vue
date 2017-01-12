@@ -55,13 +55,10 @@
       <hr/>
       <footer class="text-muted">
         <div>
-          <span class="footeritem">南校区地址：陕西省西安市西沣路兴隆段266号</span>
-          <span class="footeritem"> 邮编：710126</span>
-          <span class="footeritem">北校区地址：陕西省西安市太白南路2号</span>
+          <span class="footeritem">地址：陕西省西安市太白南路2号</span>
           <span class="footeritem"> 邮编：710071</span>
+          <span class="footeritem">电话：029-88201000</span>
         </div>
-        <div>
-          <span class="footeritem">电话：029-88201000</span></div>
       </footer>
       <br/>
     </div>

@@ -15,12 +15,15 @@
         <tbody>
         <tr v-for="item in contentList" style="height:  150px;">
           <!-- 显示 -->
-          <td width="20%"><img :src="item.picture" :alt="item.picture" width="200" height="150"></td>
-
+          <td width="20%">
+            <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id" class="thumbnail" >
+              <img :src="item.picture" :alt="item.picture" width="200" height="150">
+            </a>
+          </td>
           <td width="3%"></td>
           <td  width="80%">
             <tr>
-              <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id">
+              <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id" style="color: #333333">
                 <h4>{{ item.title }}</h4>
               </a>
             </tr>
@@ -28,7 +31,6 @@
                 <h5>{{ item.guide }}</h5>
             </tr>
           </td>
-
         </tr>
         </tbody>
       </table>

@@ -1,11 +1,11 @@
 <template>
   <div class="page-bar">
     <ul>
-      <li v-if="cur!=1"><a @click="cur--">上一页</a></li>
+      <li v-if="cur!=1"><a @click="prev()">上一页</a></li>
       <li v-for="index in indexes" :class="{ active: cur == index}">
         <a v-on:click="btnClick(index)">{{ index }}</a>
       </li>
-      <li v-if="cur!=all"><a @click="cur++">下一页</a></li>
+      <li v-if="cur!=all"><a @click="next()">下一页</a></li>
       <li><a>共<i>{{all}}</i>页</a></li>
     </ul>
   </div>
@@ -25,6 +25,12 @@ export default {
         this.cur = data;
         this.$emit('btn-click', data)
       }
+    },
+    prev() {
+      this.$emit('btn-click', --this.cur)
+    },
+    next() {
+      this.$emit('btn-click', ++this.cur)
     }
   },
   props: {
