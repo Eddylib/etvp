@@ -12,8 +12,8 @@
             <ul>
               <li><a href="index"><span class="glyphicon glyphicon-calendar">主页</span></a></li>
               <li><a href="asplist?request=activity"><span class="glyphicon glyphicon-calendar">动态</span></a></li>
-              <li><a href="asplist?request=study"><span class="glyphicon glyphicon-book">项目</span></a></li>
-              <li><a href="asplist?request=project"><span class="glyphicon glyphicon-wrench">科研</span></a></li>
+              <li><a href="asplist?request=study"><span class="glyphicon glyphicon-book">科研</span></a></li>
+              <li><a href="asplist?request=project"><span class="glyphicon glyphicon-wrench">项目</span></a></li>
               <li><a href="team"><span class="glyphicon glyphicon-user">团队</span></a></li>
               <li><a href="about"><span class="glyphicon glyphicon-comment">关于</span></a></li>
             </ul>

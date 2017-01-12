@@ -127,7 +127,7 @@
           this.$data.headtitleType = '动态';
           item.classify = 'activity';
           this.$store.dispatch('FETCH_LIST_ACTIVITY', 0);
-        } else if(argumentin === 'study') {
+        } else if(argumentin === 'study' || argumentin === 'science') {
           this.$data.headtitleType = '科研';
           item.classify = 'science';
           this.$store.dispatch('FETCH_LIST_SCIENCE', 0);
