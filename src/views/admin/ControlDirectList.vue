@@ -40,7 +40,7 @@
             <td width="60%">{{ item.guide }}</td>
             <td>
               <!-- 删除 -->
-              <button type="button" class="btn btn-default" @click="delDirect(item)">删除</button>
+              <button type="button" class="btn btn-default" @click="delDirect(item.id)">删除</button>
               <!-- 编辑 -->
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" @click="fetchInput(item.name, item.guide)">
@@ -113,7 +113,7 @@
         }
       },
       delDirect: function (item) {
-        console.log("del direct " + item.num);
+          this.$store.dispatch('DEL_DIRECTION', item);
       },
       modDirect: function (id) {
         let title = this.$data.inputtitle;

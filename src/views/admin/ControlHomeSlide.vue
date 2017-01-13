@@ -8,19 +8,19 @@
         <h3>增加滑块内容</h3>
         <div style="width: 90%;margin:5%;background-color: #eeeeee">
           <h4 style="display: inline;margin-right: 30px">类别</h4>
-          <select style="display: inline; width:100px;" v-model="selecttype">
+          <select  class="selectpicker" style="display: inline; width:100px;" v-model="selecttype">
             <option v-for="option in type" v-bind:value="option.value">
               {{ option.text }}
             </option>
           </select>
           <h4 style="display: inline;margin-left: 30px;margin-right: 30px">页数</h4>
-          <select style="display: inline; width:50px;" v-model="selectedpage">
+          <select  class="selectpicker" style="display: inline; width:50px;" v-model="selectedpage">
             <option v-for="option in maxpage" v-bind:value="option" >
               {{ option }}
             </option>
           </select>
           <h4 style="display: inline;margin-left: 80px;margin-right: 30px">标题</h4>
-          <select style="display: inline; width:300px;" v-model="selecteditem">
+          <select  class="selectpicker" style="display: inline; width:300px;" v-model="selecteditem">
             <option v-for="option in contentList" v-bind:value="option.id">
               {{ option.title }}
             </option>

@@ -27,7 +27,7 @@
           <td width="45%"></td>
           <td>
             <!-- 删除 -->
-            <button type="button" class="btn btn-default" @click="delDirect(item)">删除</button>
+            <button type="button" class="btn btn-default" @click="delASP(item)">删除</button>
           </td>
             <!-- 编辑 -->
           <td>
@@ -78,8 +78,40 @@
       addDirect: function() {
         console.log("add direct ");
       },
-      delDirect: function (item) {
-        console.log("del direct " + item.num);
+      delASP: function (item) {
+//        {function: 'delete_list',
+//          classify: item.classify,
+//            id: item.id});
+        let subitem = {};
+        let isok = false;
+        let debug = false;
+        subitem = {
+          id: item.id
+        };
+        if(this.$data.ruquestparm === 'activity') {
+          isok = !debug;
+          subitem.classify = 'activity';
+        }else if(this.$data.ruquestparm === 'study') {
+          isok = !debug;
+          subitem.classify = 'science';
+        }else if(this.$data.ruquestparm === 'project') {
+          isok = !debug;
+          subitem.classify = 'project';
+        }
+        if(isok) {
+            this.$store.dispatch('DEL_ASP', subitem);
+        }else {
+          if(debug) {
+            let data = '';
+            subitem.id = this.$route.query.id;
+            for(let index in subitem) {
+              data = data + index + ':' + subitem[index] + '\n';
+            }
+            alert(data);
+          }else {
+            alert("add or edit article error!");
+          }
+        }
       },
       modDirect: function (item) {
         console.log("mod direct " + item.num);

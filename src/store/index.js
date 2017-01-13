@@ -86,6 +86,24 @@ const store = new Vuex.Store({
         }
       })
     },
+    ADD_TEACHERS: ({ commit, dispatch, state, getters }, item) => {
+      return service.addTeacher(item).then(response => {
+        if(response.data.state === 1) {
+          alert("add teacher ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_TEACHERS: ({ commit, dispatch, state, getters }, idin) => {
+      return service.deleteTeacher(idin).then(response => {
+        if(response.data.state === 1) {
+          alert("delete teacher ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
     FETCH_STUDENTS: ({ commit, dispatch, state, getters }, type) => {
       return service.getStudentsList(type).then(response => {
         if(response.data.state === 1) {
@@ -94,6 +112,15 @@ const store = new Vuex.Store({
           } else if(type === 'outschool') {
             commit('SET_LIST_STUDENTS_OUTSCHOOL', response.data.data);
           }
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_STUDENTS: ({ commit, dispatch, state, getters }, idin) => {
+      return service.delStudent(idin).then(response => {
+        if(response.data.state === 1) {
+          alert("delete student ok! \n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -108,10 +135,37 @@ const store = new Vuex.Store({
         }
       })
     },
+    MOD_STUDENT_SIMPLE: ({ commit, dispatch, state, getters }, item) => {
+      return service.modStudentSimple(item).then(response => {
+        if(response.data.state === 1) {
+          alert("add student ok\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
     FETCH_STUDENT_DETAIL_SPEECHES: ({ commit, dispatch, state, getters }, idin) => {
       return service.getStudintDetilSpeech(idin).then(response => {
         if(response.data.state === 1) {
           commit('SET_CURR_STUDENT_SPEECH', response.data.data);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_STUDENT_DETAIL_SPEECH: ({ commit, dispatch, state, getters }, idin) => {
+      return service.deleteStudintDetilSpeech(idin).then(response => {
+        if(response.data.state === 1) {
+          alert("delete student's speech ok! \n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    MOD_STUDENT_DETAIL_SPEECHES: ({ commit, dispatch, state, getters }, item) => {
+      return service.modStudintDetilSpeech(item).then(response => {
+        if(response.data.state === 1) {
+          alert("mod student speech ok\n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -126,6 +180,24 @@ const store = new Vuex.Store({
         }
       })
     },
+    ADD_STUDENT_DETAIL_PROJECTS: ({ commit, dispatch, state, getters }, item) => {
+      return service.addStudintDetilProject(item).then(response => {
+        if(response.data.state === 1) {
+          alert("add project ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_STUDENT_DETAIL_PROJECTS: ({ commit, dispatch, state, getters }, item) => {
+      return service.delStudentDetailProject(item).then(response => {
+        if(response.data.state === 1) {
+          alert("delete project ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
     FETCH_STUDENT_DETAIL_PRIZES: ({ commit, dispatch, state, getters }, idin) => {
       return service.getStudintDetilPrize(idin).then(response => {
         if(response.data.state === 1) {
@@ -135,10 +207,46 @@ const store = new Vuex.Store({
         }
       })
     },
+    DEL_STUDENT_DETAIL_PRIZE: ({ commit, dispatch, state, getters }, idin) => {
+      return service.delStudintDetilPrize(idin).then(response => {
+        if(response.data.state === 1) {
+          alert("delete student's prize ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    MOD_STUDENT_DETAIL_PRIZES: ({ commit, dispatch, state, getters }, item) => {
+      return service.modStudintDetilPrize(item).then(response => {
+        if(response.data.state === 1) {
+          alert("mod prize ok\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
     FETCH_STUDENT_DETAIL_THESISES: ({ commit, dispatch, state, getters }, idin) => {
       return service.getStudintDetilThesis(idin).then(response => {
         if(response.data.state === 1) {
           commit('SET_CURR_STUDENT_THESISES', response.data.data);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    DEL_STUDENT_DETAIL_THESIS: ({ commit, dispatch, state, getters }, idin) => {
+      return service.delStudintDetilThesis(idin).then(response => {
+        if(response.data.state === 1) {
+          alert("delete student's thesis ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
+    MOD_STUDENT_DETAIL_THESISES: ({ commit, dispatch, state, getters }, item) => {
+      return service.modStudintDetilThesis(item).then(response => {
+        if(response.data.state === 1) {
+          alert("mod thesis ok!\n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -192,6 +300,15 @@ const store = new Vuex.Store({
         }
       })
     },
+    DEL_ASP: ({ commit, dispatch, state, getters }, item) => {
+      return service.deleteASPD(item).then(response => {
+        if(response.data.state === 1) {
+          alert("delete" + item.classify + "  ok!\n" + response.data.message);
+        } else {
+          alert("service error\n" + response.data.message);
+        }
+      })
+    },
     FETCH_ASP_DETAIL: ({ commit, dispatch, state, getters }, item) => {
       return service.getASPDDetail(item).then(response => {
         commit('SET_CURR_ARTICLE_INFO', response.data.data);
@@ -214,6 +331,7 @@ const store = new Vuex.Store({
     ADD_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
       return service.addDirect(item).then(response => {
         if(response.data.state === 1) {
+          alert("add direction ok! \n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
@@ -222,14 +340,16 @@ const store = new Vuex.Store({
     EDIT_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
       return service.editDirect(item).then(response => {
         if(response.data.state === 1) {
+          alert("edit direction ok\n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }
       })
     },
-    DEL_DIRECTION: ({ commit, dispatch, state, getters }, item) => {
-      return service.deleteDirect(item).then(response => {
+    DEL_DIRECTION: ({ commit, dispatch, state, getters }, idin) => {
+      return service.deleteDirect(idin).then(response => {
         if(response.data.state === 1) {
+          alert("delete direction ok\n" + response.data.message);
         } else {
           alert("service error\n" + response.data.message);
         }

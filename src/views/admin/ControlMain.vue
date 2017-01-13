@@ -8,7 +8,7 @@
         <td style="margin-left: 100px">
           <tr ><p><a class="btn btn-primary btn-lg" href="adminmasterlist" role="button">研究方向</a></p></tr>
           <tr><p><a class="btn btn-primary btn-lg" href="adminstudentlist" role="button">学生管理</a></p></tr>
-          <tr><p><a class="btn btn-primary btn-lg" href="index" role="button">导师管理</a></p></tr>
+          <tr><p><a class="btn btn-primary btn-lg" href="adminteacherlist" role="button">导师管理</a></p></tr>
         </td>
         <td style="margin-left: 100px">
           <tr ><p><a class="btn btn-primary btn-lg" href="adminasplist?request=activity" role="button">动态管理</a></p></tr>

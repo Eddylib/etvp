@@ -6,7 +6,7 @@
         <tbody>
         <td width="30%">
           <img class="img-circle" width="150px" height="200px" style="margin: 10%"
-               src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=b811845e8d11bedb605c125b83a38764&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Ff9dcd100baa1cd115ef8d036bb12c8fcc3ce2d5d.jpg">
+               :src="stupicture">
         </td>
         <td width="50%">
           <table class="table">
@@ -68,6 +68,9 @@
       },
       stustate: function () {
         return this.$store.state.currStudent.baseInfo.state;
+      },
+      stupicture: function () {
+        return this.$store.state.currStudent.baseInfo.picture;
       },
       stuwork: function () {
         return this.$store.state.currStudent.baseInfo.work;

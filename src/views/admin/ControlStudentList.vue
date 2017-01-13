@@ -46,7 +46,7 @@
           <td width="10%" style="text-align: center">{{item.name}}</td>
           <td width="10%" style="text-align: center">{{item.id}}</td>
           <td width="60%" style="text-align: center">{{item.time}}</td>
-          <td width="10%" style="text-align: center"><button type="button" class="btn btn-default" @click="delDirect(item)">删除</button></td>
+          <td width="10%" style="text-align: center"><button type="button" class="btn btn-default" @click="delStudent(item.id)">删除</button></td>
           <td width="10%" style="text-align: center">
             <p>
               <a class="btn btn-default" :href="'adminstudentdetail?&method=modify&id=' + item.id" role="button">编辑</a>
@@ -83,6 +83,9 @@
       this.$store.dispatch('FETCH_TEACHERS');
     },
     methods: {
+        delStudent(idin) {
+            this.$store.dispatch('DEL_STUDENTS', idin);
+        }
     },
     components: {
     }

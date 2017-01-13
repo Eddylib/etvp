@@ -26,16 +26,19 @@ export const urltable = {
   editInfo: 'editinfo',
   articledetail: 'article',
   deleteinfo: 'delete',
-  getdirect: 'list'
+  getdirect: 'list',
+  editstudent: 'editstudent',
+  direction: 'direction',
+  editteacher: 'editteacher',
+  deleteteacher: 'delete',
+  deletedirect: 'delete',
+  deleteASPD: 'delete',
+  deletestudent: 'delete',
+  deletestudentspeech: 'delete',
+  deletestudentproject: 'delete',
+  deletestudentprize: 'delete',
+  deletestudentthesis: 'delete'
 };
-function extractMapToForm(map) {
-  const form = new FormData();
-  for (var key in map) {
-    if (!map.hasOwnProperty(key)) continue;
-    form.append(key, map[key]);
-  }
-  return form;
-}
 export function getHomeSlideList() {
   return axios.post(urltable.homeslidelist, {function: 'get_home', classify: 'slide'});
 }
@@ -46,9 +49,6 @@ export function addHomeSlideList(item) {
       classify: item.classify,
       picture: item.picture});
 }
-// export function editHomeSlideList(item) {
-//   return axios.post(urltable.homeslidelist, {function: 'get_home', classify: 'slide'});
-// }
 export function deleteHomeSlideList(item) {
   return axios.post(urltable.deleteinfo,
     {function: 'delete_slide',
@@ -60,6 +60,23 @@ export function getHomeList(type) {
 export function getTeacherList() {
   return axios.post(urltable.teachers, {function: 'get_teachers', state: 'all'});
 }
+export function addTeacher(item) {
+  return axios.post(urltable.editteacher,
+    {function: 'add_teacher',
+      condition: "simple",
+      name: item.name,
+      id: item.id,
+      email: item.email,
+      homepage: item.homepage,
+      picture: item.picture,
+      direction_id: item.direction_id});
+}
+export function deleteTeacher(idin) {
+  return axios.post(urltable.deleteteacher,
+    {function: 'delete_teacher',
+      condition: "all",
+      id: idin});
+}
 export function getStudentsList(type) {
   if(type === 'inschool') {
     return axios.post(urltable.studentsinschool, {function: 'get_students', state: 'study'});
@@ -68,6 +85,9 @@ export function getStudentsList(type) {
   }else {
     alert('network: error request type in get student list!  --service');
   }
+}
+export function delStudent(idin) {
+  return axios.post(urltable.deletestudent, {function: 'delete_student', condition: 'all', id: idin});
 }
 export function getAllActivityList(page) {
   return axios.post(urltable.itemlist, {function: 'get_list', classify: 'activity', page: page});
@@ -81,17 +101,79 @@ export function getAllScienceList(page) {
 export function getStudintDetailBaseInfo(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'simple', id: idin});
 }
+export function modStudentSimple(item) {
+  return axios.post(urltable.editstudent,
+    {function: item.function,
+      condition: 'simple',
+      name: item.name,
+      id: item.id,
+      email: item.email,
+      time: item.time,
+      work: item.work,
+      picture: item.picture,
+      direction_id: item.direction_id
+    });
+}
+
 export function getStudintDetilSpeech(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'speech', id: idin});
+}
+export function deleteStudintDetilSpeech(idin) {
+  return axios.post(urltable.deletestudentspeech, {function: 'delete_student_detail', condition: 'speech', id: idin});
+}
+export function modStudintDetilSpeech(item) {
+  return axios.post(urltable.editstudent,
+    {function: item.function,
+      condition: 'speech',
+      id: item.id,
+      student_id: item.student_id,
+      title: item.title,
+      path: item.path});
 }
 export function getStudintDetilProject(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'project', id: idin});
 }
+export function addStudintDetilProject(item) {
+  return axios.post(urltable.editstudent, {
+    function: 'add_student',
+    condition: 'project',
+    id: item.id,
+    project: item.project});
+}
+export function delStudentDetailProject(item) {
+  return axios.post(urltable.deletestudentproject, {
+    function: 'delete_student',
+    condition: 'project',
+    id: item.id});
+}
 export function getStudintDetilPrize(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'prize', id: idin});
 }
+export function modStudintDetilPrize(item) {
+  return axios.post(urltable.editstudent,
+    {function: item.function,
+      condition: 'prize',
+      id: item.id,
+      student_id: item.student_id,
+      title: item.title});
+}
+export function delStudintDetilPrize(idin) {
+  return axios.post(urltable.deletestudentprize, {function: 'delete_student_detail', condition: 'prize', id: idin});
+}
 export function getStudintDetilThesis(idin) {
   return axios.post(urltable.studentdetail, {function: 'get_student_detail', condition: 'thesis', id: idin});
+}
+export function modStudintDetilThesis(item) {
+  return axios.post(urltable.editstudent,
+    {function: item.function,
+      condition: 'thesis',
+      id: item.id,
+      student_id: item.student_id,
+      title: item.title,
+      path: item.path});
+}
+export function delStudintDetilThesis(idin) {
+  return axios.post(urltable.deletestudentthesis, {function: 'delete_student_detail', condition: 'thesis', id: idin});
 }
 export function addASPD(item) {
   return axios.post(urltable.editInfo,
@@ -101,6 +183,12 @@ export function addASPD(item) {
       guide: item.guide,
       picture: item.picture,
       path: item.path});
+}
+export function deleteASPD(item) {
+  return axios.post(urltable.deleteASPD,
+    {function: 'delete_list',
+      classify: item.classify,
+      id: item.id});
 }
 export function editASPD(item) {
   return axios.post(urltable.editInfo,
@@ -120,7 +208,7 @@ export function getASPDDetail(item) {
       id: item.id});
 }
 export function getDirect() {
-  return axios.post(urltable.getdirect,
+  return axios.post(urltable.itemlist,
     {function: 'get_direction'});
 }
 
@@ -139,8 +227,8 @@ export function editDirect(item) {
       name: item.name,
       guide: item.guide});
 }
-export function deleteDirect(item) {
-  return axios.post(urltable.deleteinfo,
+export function deleteDirect(idin) {
+  return axios.post(urltable.deletedirect,
     {function: 'delete_direction',
-      id: item.id});
+      id: idin});
 }

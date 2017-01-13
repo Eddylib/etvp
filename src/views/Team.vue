@@ -28,7 +28,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents1">
-            <ul style="text-align: center">{{ item.name }}</ul>
+            <ul style="text-align: center"><a :href="'student?id='+item.id"><p style="text-align: center">{{ item.name }}</p></a></ul>
           </tr>
           </tbody>
         </table>
@@ -37,7 +37,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents2">
-            <ul style="text-align: center">{{ item.name }}</ul>
+            <ul style="text-align: center"><a :href="'student?id='+item.id"><p style="text-align: center">{{ item.name }}</p></a></ul>
           </tr>
           </tbody>
         </table>
@@ -46,7 +46,7 @@
         <table class="table table-striped table-hover">
           <tbody>
           <tr v-for="item in linschoolstudents3">
-            <ul style="text-align: center">{{ item.name }}</ul>
+            <ul style="text-align: center"><a :href="'student?id='+item.id"><p style="text-align: center">{{ item.name }}</p></a></ul>
           </tr>
           </tbody>
         </table>
@@ -57,8 +57,9 @@
     <!-- gratudeate students -->
     <h4>毕业生</h4>
     <div class="row">
-      <!--<a :href="'student?id='+item.id"></a>-->
-      <div class="col-xs-3" v-for="item in loutschoolstudents"><p style="text-align: center">{{ item.name }}</p></div>
+      <div class="col-xs-3" v-for="item in loutschoolstudents">
+        <a :href="'student?id='+item.id"><p style="text-align: center">{{ item.name }}</p></a>
+      </div>
     </div>
 
   </div>
