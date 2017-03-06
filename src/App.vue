@@ -51,10 +51,10 @@
     </transition>
 
 
-    <div class="container clearfix">
-      <hr/>
+    <div class="container clearfix" style="float: left;margin-left: 40px">
+      <hr width="105%" />
       <footer class="text-muted">
-        <div>
+        <div style="font-size: small">
           <span class="footeritem">地址：陕西省西安市太白南路2号</span>
           <span class="footeritem"> 邮编：710071</span>
           <span class="footeritem">电话：029-88201000</span>
@@ -119,6 +119,6 @@
   #daohang ul{ list-style:none; margin-left: 55px}
   #daohang ul li{ width:90px;   float:left;}
   #daohang ul li:hover{}
-  #daohang ul li a{text-decoration:none; display:block;height: 40px; text-align: center; color: white; font-size: 17px; line-height: 30px}
-  #daohang ul li a:hover{ background:#eeeeee; color:#750D10;}
+  #daohang ul li a{text-decoration:none; display:block;height: 40px; text-align: center; color: white; font-size: 17px; line-height: 37px}
+  #daohang ul li a:hover{ background:#eeeeee; color:#750D10; line-height: 37px; font-size: 17px;}
 </style>

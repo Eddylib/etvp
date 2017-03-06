@@ -4,23 +4,23 @@
     <div style="background-color:whitesmoke;">
       <table width="100%">
         <tbody>
-        <td width="30%">
-          <img class="img-circle" width="150px" height="200px" style="margin: 10%"
+        <td width="30%" align="center">
+          <img width="150px" height="200px" style="margin: 10%;"
                :src="stupicture">
         </td>
         <td width="50%">
-          <table class="table">
+          <table class="table" style="margin-top: 50px">
             <thead>
-            <th>基本信息</th>
+            <p style="font-size: 25px"><b>基本信息</b></p>
             </thead>
             <tbody>
 
             <td width="30%">
-              <tr><h4>姓名</h4></tr>
-              <tr><h4>方向</h4></tr>
-              <tr><h4>年级</h4></tr>
-              <tr><h4>邮箱</h4></tr>
-              <tr><h4>毕业去向</h4></tr>
+              <tr><h4><b>姓名</b></h4></tr>
+              <tr><h4><b>方向</b></h4></tr>
+              <tr><h4><b>年级</b></h4></tr>
+              <tr><h4><b>邮箱</b></h4></tr>
+              <tr><h4><b>毕业去向</b></h4></tr>
             </td>
             <td>
               <tr><h4>{{ stuname }}</h4></tr>
@@ -38,23 +38,23 @@
     </div>
     <!--总结报告-->
 
-    <h3>总结报告</h3>
+    <h3><b>总结报告</b></h3>
     <ol>
-      <ul v-for="item in stuspeeches"><a :href="item.path">{{ item.title }}</a></ul>
+      <ul v-for="item in stuspeeches"><a :href="item.path" style="color: black"><i>{{ item.title }}</i></a></ul>
     </ol>
     <!--获奖-->
-    <h3>获奖</h3>
+    <h3><b>获奖</b></h3>
     <ol>
-      <ul v-for="item in stuprizes">{{ item.title }}</ul>
+      <ul v-for="item in stuprizes"><i>{{ item.title }}</i></ul>
     </ol>
     <!--论文-->
-    <h3>论文</h3>
+    <h3><b>论文</b></h3>
     <ol>
-      <ul v-for="item in stuthesises"><a :href="item.path">{{ item.title }}</a></ul>
+      <ul v-for="item in stuthesises"><a :href="item.path" style="color: black"><u><i>{{ item.title }}</i></u></a></ul>
     </ol>
-    <h3>项目</h3>
+    <h3><b>项目</b></h3>
     <ol>
-      <ul v-for="item in stuprojects"><a :href="'index'">{{ item.title }}</a></ul>
+      <ul v-for="item in stuprojects"><a :href="'index'" style="color: black"><i>{{ item.title }}</i></a></ul>
     </ol>
   </div>
 </template>

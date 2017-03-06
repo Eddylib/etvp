@@ -1,21 +1,24 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div>
-    <div class="page-header">
+    <div>
       <h1>{{ headtitleType }}<small>——{{ headsubtitle }}</small></h1>
     </div>
-    <table>
-      <td width="70%">
-        <div  v-html="contentinfocontent" style="background-color: #f1f1f1; width: 90%; margin-top:50px;margin-left: 5%;" ></div>
+    <table style="margin-top: -5px">
+      <td width="80%" style="background-color: whitesmoke">
+        <div>
+          <div v-html="contentinfocontent" style="width: 90%; margin-top:-10px;margin-left: 50px;" ></div>
+        </div>
       </td>
-      <td  width="30%"><table class="table table-striped" style="margin-top: 30px;margin-left: 50px">
+      <td width="3%"></td>
+      <td  width="20%"><table class="table table-striped" style="margin-top: 30px;margin-right: 10%">
         <thead>
-        <th><h3>最近{{ headtitleType }}</h3></th>
+        <th><p style="font-size: 20px"><b>最近{{ headtitleType }}</b></p></th>
         </thead>
         <tbody>
         <tr v-for="item in contentList" >
           <!-- 显示 -->
           <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id" style="color: #333333;">
-            <h4>{{ item.title }}</h4>
+            <p style="font-size: 15px; color: #3b97d7">{{ item.title }}</p>
           </a>
         </tr>
         </tbody>
@@ -65,7 +68,7 @@
           return this.$store.state.listActivity;
         }else if(this.$data.ruquestparm === 'project') {
           return this.$store.state.listProject;
-        }else if(this.$data.ruquestparm === 'science') {
+        }else if(this.$data.ruquestparm === 'study') {
           return this.$store.state.listScience;
         }
       }

@@ -2,11 +2,11 @@
   <div>
     <swiper :options="swiperOption" ref="mySwiperA">
       <!-- 幻灯内容 -->
-      <swiper-slide v-for="item in homeslide">
-        <a :href="'aspdetail?request=' + item.classify + '&id=' + item.object_id"><img :src="item.picture" alt="item.pictpath" width="100%"></a>
-        <div style="position:absolute;z-index: auto; right: 10%; top: 90%;align: center;">
-          <p style="color: whitesmoke; font-size: large">{{item.title}}</p>
-        </div>
+      <swiper-slide v-for="item in homeslide" >
+        <a :href="'aspdetail?request=' + item.classify + '&id=' + item.object_id"><img :src="item.picture" alt="item.pictpath" width="100%" height="400px"></a>
+          <div style="position:absolute;left: 80%;bottom: -1%;align-content: center;background-color: rgba(0,0,0,0.7)">
+            <p style="font-size: large;margin-left: 10px;margin-top: 10px;-webkit-text-stroke: 0.7px gray;-webkit-text-fill-color: white">{{item.title}}</p>
+          </div>
       </swiper-slide>
       <!-- ... -->
       <!-- 以下控件元素均为可选（使用具名slot来确定并应用一些操作控件元素） -->
@@ -61,4 +61,5 @@
   h1 {
     color: #42b983;
   }
+
 </style>

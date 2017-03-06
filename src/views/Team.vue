@@ -3,12 +3,14 @@
     <!-- teacher -->
     <h1>导师</h1>
     <table width="100%">
-      <div class="col-xs-3" v-for="item in lteachers">
+      <div class="col-xs-2" v-for="item in lteachers">
         <table >
-          <tr style="text-align: center"><a :href="item.web" thumbnail><img class="team-mamber-teacher-pict"
-                              :src="item.picture"></a></tr>
+          <tr style="text-align: center;" ><a :href="item.web" thumbnail><img class="team-mamber-teacher-pict"
+                              :src="item.picture" style="width: 150px;height: 150px"></a></tr>
           <tr style="text-align: center"><a :href="item.web" style="color: #333333"><p width=100% align="center" style="margin-top: 10px">{{item.name}}</p></a></tr>
           <tr style="text-align: center"><p width=100% align="center">研究方向:{{item.direction}}</p></tr>
+          <tr style="text-align: center"><p width=100% align="center"><i>{{item.email}}</i></p></tr>
+
       </table>
       </div>
     </table>

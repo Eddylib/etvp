@@ -7,9 +7,9 @@
       <table width="100%" class="table table-striped" style="margin-top: 30px">
         <thead>
         <tr>
-          <th><h3>{{ listhead }}</h3></th>
+          <!--<th><h3>{{ listhead }}</h3></th>
           <th></th>
-          <th></th>
+          <th></th>-->
         </tr>
         </thead>
         <tbody>
@@ -17,25 +17,27 @@
           <!-- 显示 -->
           <td width="20%">
             <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id" class="thumbnail" >
-              <img :src="item.picture" :alt="item.picture" width="200" height="150">
+              <img :src="item.picture" :alt="item.picture" class="home-news-pict">
             </a>
           </td>
           <td width="3%"></td>
           <td  width="80%">
             <tr>
               <a :href="'aspdetail?request=' + ruquestparm + '&id=' + item.id" style="color: #333333">
-                <h4>{{ item.title }}</h4>
+                <h4><b>{{ item.title }}</b></h4>
               </a>
             </tr>
             <tr>
-                <h5>{{ item.guide }}</h5>
+                <p style="padding: 10px 0"><i>{{ item.guide }}</i></p>
             </tr>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
-    <pagebar :all="pageamount" v-on:btn-click="btnclick"></pagebar>
+    <div align="center" style="margin-top: -10px">
+      <pagebar :all="pageamount" v-on:btn-click="btnclick"></pagebar>
+    </div>
   </div>
 </template>
 
@@ -128,6 +130,10 @@
 
 
 <style scoped>
-
+  .home-news-pict {
+    width: 150px;
+    height: 100px;
+    margin-top: 1%;
+  }
 
 </style>

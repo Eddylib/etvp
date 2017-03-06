@@ -7,7 +7,7 @@
       <table border=0 width="100%" height="100px" style="margin-top:25px">
         <tbody>
         <td width="48%" style="vertical-align: top;">
-          <h2>动态</h2>
+          <h2 class="shadowfortxt" style="margin-left: 10px"><b>动态</b></h2>
           <table class="table table-hover">
             <tbody>
             <tr v-for="item in activityList">
@@ -16,7 +16,7 @@
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" :href="'aspdetail?request=activity&id=' + item.id" style="color: #333333">{{ item.title }}</a>
+                  <a class="things-title" :href="'aspdetail?request=activity&id=' + item.id" style="color: #333333;font-size: large"><b>{{ item.title }}</b></a>
                   <p>{{ item.guide }}</p>
                 </table>
               </td>
@@ -29,8 +29,9 @@
             </tbody>
           </table>
         </td>
+        <td width="1%"></td>
         <td width="48%" style="vertical-align: top;">
-          <h2>项目</h2>
+          <h2 class="shadowfortxt" style="margin-left: 10px"><b>项目</b></h2>
           <table class="table table-hover">
             <tbody>
             <tr v-for="item in projectList">
@@ -39,7 +40,7 @@
               </td>
               <td width="60%">
                 <table>
-                  <a class="things-title" :href="'aspdetail?request=project&id=' + item.id" style="color: #333333">{{ item.title }}</a>
+                  <a class="things-title" :href="'aspdetail?request=project&id=' + item.id" style="color: #333333;font-size: large"><b>{{ item.title }}</b></a>
                   <p>{{ item.guide }}</p>
                 </table>
               </td>
@@ -94,7 +95,6 @@
 
 <style scoped>
 
-
   .book-page {
     margin-left: 5%;
     margin-right: 5%;
@@ -104,6 +104,9 @@
     width: 150px;
     height: 100px;
     margin-top: 1%;
+  }
+  .shadowfortxt {
+    text-shadow: 0.1em 0.1em 0.1em grey;
   }
   tr > td:first-child {
     /*width: 100px;*/
